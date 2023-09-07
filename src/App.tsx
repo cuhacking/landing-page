@@ -1,9 +1,10 @@
 import { useStyletron } from "baseui";
 import "minireset.css";
 import "./App.css";
-import { Wordmark } from "./components/icons/Wordmark";
+import { FooterDecorator, Wordmark } from "./components/icons/Wordmark";
 import { CampusSkyline, Clouds } from "./components/icons/CampusSkyline";
 import { StyleObject } from "styletron-react";
+import { useState } from "react";
 
 export const Column = (props: { children: React.ReactNode; $style?: StyleObject }) => {
   const [css, $theme] = useStyletron();
@@ -162,16 +163,25 @@ const Section = (props: { children: React.ReactNode; $style?: StyleObject; title
       height: "100%",
       paddingLeft: "150px",
       paddingRight: "150px",
+
+
     })}
   >
     <h1
       className={
         css({
           color: "#000",
-          fontSize: "28px",
+          fontSize: "36px",
+          fontFamily: "Poppins",
+          fontStyle: "normal",
+          fontWeight: "700",
+          lineHeight: "normal",
         })
       }
     >{props.title}</h1>
+    <div>
+      {props.children}
+    </div>
   </div>
 }
 
@@ -277,6 +287,111 @@ const SkyBackground = () => {
   );
 };
 
+export const QuestionAccordion = (props: { question: string; answer: string; }) => {
+  const [css, $theme] = useStyletron();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const baseStyles = {
+    width: "100%",
+    height: "111px",
+    cursor: "pointer",
+    background: "transparent",
+    border: "5px solid #000",
+    borderRadius: "100px",
+    display: "flex",
+    padding: "32px",
+    paddingLeft: "80px",
+    alignContent: "center",
+    alignItems: "center",
+    transition: "height 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out",
+  };
+
+  if (!isOpen) {
+    return (
+      <div
+        onClick={
+          () => {
+            setIsOpen(true);
+          }
+        }
+        id={`question-${props.question}`}
+        className={css(baseStyles)}>
+        <h1 className={
+          css({
+            color: "#000",
+            textAlign: "center",
+            fontFamily: "Poppins",
+            fontSize: "18px",
+            fontStyle: "normal",
+            fontWeight: "700",
+            lineHeight: "normal",
+          })
+        }>
+          {props.question}
+        </h1>
+      </div >
+    );
+  }
+
+  return (
+    <div
+      onClick={
+        () => {
+          setIsOpen(false);
+        }
+      }
+      id={`question-${props.question}`}
+      className={css({
+        ...baseStyles,
+        height: "302px",
+        alignItems: "flex-start",
+        flexDirection: "column",
+
+        backgroundColor: "#E8EBEF",
+      }
+      )}>
+
+      <h1 className={
+        css({
+          color: "#000",
+          textAlign: "center",
+          fontFamily: "Poppins",
+          fontSize: "18px",
+          fontStyle: "normal",
+          fontWeight: "700",
+          lineHeight: "normal",
+          transition: "all 0.2s ease-in-out",
+        })
+      }>
+        {props.question}
+      </h1>
+
+
+      <p className={
+        css({
+          color: "#000",
+          textAlign: "center",
+          fontFamily: "Poppins",
+          fontSize: "18px",
+          fontStyle: "normal",
+          fontWeight: "400",
+          lineHeight: "normal",
+          paddingLeft: "44px",
+        })
+      }>
+        {"✦"} {props.answer}
+      </p>
+
+    </div >
+  );
+
+
+
+
+}
+
+
+
 export const App = () => {
   return (
     <Column
@@ -288,12 +403,33 @@ export const App = () => {
       }
     >
       <SkyBackground />
-      <Section title="About">
-      </Section>
+      <Column $style={
+        {
+          gap: "97px",
+        }
+      }>
+        <Section title="Frequently Asked Questions">
+          <Column $style={
+            {
+              marginTop: "34px",
+              gap: "34px",
+            }
+          }>
+            <QuestionAccordion question="What is CUHacking?" answer="CUHacking is Carleton University's official hackathon." />
+            <QuestionAccordion question="Who can participate?" answer="CUHacking is Carleton University's official hackathon." />
+            <QuestionAccordion question="What does it cost?" answer="CUHacking is Carleton University's official hackathon." />
+            <QuestionAccordion question="What are the prizes?" answer="CUHacking is Carleton University's official hackathon." />
+            <QuestionAccordion question="Do I need coding experience?" answer="CUHacking is Carleton University's official hackathon." />
+          </Column>
+        </Section>
 
-      <Row>
-        <h1>Past sponsors</h1>
-      </Row>
+
+        <Section title="Past Sponsors">
+
+        </Section>
+
+        <FooterDecorator />
+      </Column>
     </Column>
   );
 };
