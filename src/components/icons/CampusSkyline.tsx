@@ -40,12 +40,13 @@ export const Cloud = (props: CloudProps) => {
     // pick a random cloud
     const [leftPosition, setLeftPosition] = useState(props.left);
     const imageRef = React.useRef<HTMLImageElement>(null);
-
     const width = imageRef.current?.clientWidth || 0;
 
     useEffect(() => {
         const interval = setInterval(() => {
             setLeftPosition((prev) => {
+                prev = prev.slice(0, -2);
+
                 const newLeft = parseInt(prev) + 1;
 
                 if (newLeft > window.innerWidth) {
@@ -85,27 +86,27 @@ export const Clouds = () => {
 
     const cloudsProps = [
         {
-            top: "10%",
-            left: "10%",
+            top: "10px",
+            left: "20px",
             cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
         },
         {
-            top: "20%",
-            left: "20%",
+            top: "220px",
+            left: "220px",
             blurry: true,
             cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
         },
         {
-            top: "30%",
-            left: "30%",
+            top: "330px",
+            left: "330px",
         },
         {
-            top: "50%",
-            left: "80%",
+            top: "550px",
+            left: "800px",
         },
         {
-            top: "40%",
-            left: "40%",
+            top: "440px",
+            left: "440px",
         },
         {
             top: "304px",
