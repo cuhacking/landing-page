@@ -40,7 +40,7 @@ export const SignUpButton = (props: {
       onClick={props.onClick}
       className={
         css({
-          width: "160px",
+          width: "auto",
           height: "60px",
           borderRadius: "100px",
           background: "#FF7C7C",
@@ -239,10 +239,10 @@ const SkyBackground = () => {
               <SignUpButton
                 onClick={
                   () => {
-                    window.open("https://cuhacking.ca", "_blank");
+                    window.open("https://forms.gle/j5VCCmBeDSmQYa6x6", "_blank");
                   }
                 }
-              >Join our team!</SignUpButton>
+              >Join our Mailing List</SignUpButton>
             </div>
           </Column>
         </Row>
