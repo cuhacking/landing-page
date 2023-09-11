@@ -1,14 +1,12 @@
 import { useStyletron } from 'baseui';
 import wordmark from './wordmark.svg';
-import { SVGProps } from 'react';
-import { StyledSvg } from 'baseui/icon';
 import footerdecorator from './footerdecorator.svg';
 
 export const Wordmark = (props: {
     width?: string;
     height?: string;
 }) => {
-    const [css, $theme] = useStyletron();
+    const [css, _$theme] = useStyletron();
 
     return (
 
@@ -23,7 +21,7 @@ export const Wordmark = (props: {
 };
 
 export const FooterDecorator = () => {
-    const [css, $theme] = useStyletron();
+    const [css, _$theme] = useStyletron();
 
     return (
         <img className={
