@@ -15,7 +15,7 @@ const CLOUDS = [
 ];
 
 export const CampusSkyline = () => {
-    const [css, $theme] = useStyletron();
+    const [css, _$theme] = useStyletron();
 
     return (
         <img
@@ -59,7 +59,7 @@ export const Cloud = (props: CloudProps) => {
         return () => clearInterval(interval);
     }, []);
 
-    const [css, $theme] = useStyletron();
+    const [css, _$theme] = useStyletron();
 
     return (
         <img
@@ -82,9 +82,8 @@ export const Cloud = (props: CloudProps) => {
 
 
 export const Clouds = () => {
-    const [css, $theme] = useStyletron();
 
-    const cloudsProps = [
+    const cloudsProps: CloudProps[] = [
         {
             top: "10px",
             left: "20px",
@@ -99,14 +98,17 @@ export const Clouds = () => {
         {
             top: "330px",
             left: "330px",
+            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
         },
         {
             top: "550px",
             left: "800px",
+            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
         },
         {
             top: "440px",
             left: "440px",
+            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
         },
         {
             top: "304px",

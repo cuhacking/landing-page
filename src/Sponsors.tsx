@@ -1,11 +1,10 @@
-import React from "react"
 import { Row } from "./App";
 import { useStyletron } from "baseui";
 import { PAST_SPONSOR_IMAGES } from "./cuhacking-past-sponsors/cuHackingPastSponsors";
 
 
 export const Sponsors = () => {
-    const [css, $theme] = useStyletron();
+    const [css, _$theme] = useStyletron();
 
     const images = PAST_SPONSOR_IMAGES;
 

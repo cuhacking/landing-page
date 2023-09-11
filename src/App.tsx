@@ -4,13 +4,13 @@ import "./App.css";
 import { FooterDecorator, Wordmark } from "./components/icons/Wordmark";
 import { CampusSkyline, Clouds } from "./components/icons/CampusSkyline";
 import { StyleObject } from "styletron-react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Sponsors } from "./Sponsors";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Modal } from "baseui/modal";
 
 export const Column = (props: { children: React.ReactNode; $style?: StyleObject }) => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
 
   return (
     <div
@@ -33,7 +33,7 @@ export const SignUpButton = (props: {
   children: React.ReactNode;
   onClick?: () => void;
 }) => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
 
   return (
     <div
@@ -93,7 +93,7 @@ letter-spacing: 1.4px;
 }
 
 export const Subheading = (props: { children: React.ReactNode; $style?: StyleObject }) => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
 
   return (
     <p
@@ -115,7 +115,7 @@ export const Subheading = (props: { children: React.ReactNode; $style?: StyleObj
 }
 
 export const Subheading2 = (props: { children: React.ReactNode; $style?: StyleObject }) => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
 
   return (
     <p
@@ -138,7 +138,7 @@ export const Subheading2 = (props: { children: React.ReactNode; $style?: StyleOb
 
 
 export const Row = (props: { children: React.ReactNode; $style?: StyleObject }) => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
 
   return (
     <div
@@ -158,7 +158,7 @@ export const Row = (props: { children: React.ReactNode; $style?: StyleObject }) 
 };
 
 const Section = (props: { children: React.ReactNode; $style?: StyleObject; title: string }) => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
 
   return <div
     className={css({
@@ -192,7 +192,7 @@ const Section = (props: { children: React.ReactNode; $style?: StyleObject; title
 }
 
 const SkyBackground = () => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
 
   return (
     <div
@@ -294,7 +294,7 @@ const SkyBackground = () => {
 };
 
 export const QuestionAccordion = (props: { question: string; answer: string; }) => {
-  const [css, $theme] = useStyletron();
+  const [css, _$theme] = useStyletron();
   const [isOpen, setIsOpen] = useState(false);
 
   const baseStyles = {
