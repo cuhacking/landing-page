@@ -129,6 +129,15 @@ export const Clouds = () => {
         }
     ]
 
+    // if the screen width is less than 1000px, remove a cloud for every 100px
+    // this is so we dont have a fat cluster of clouds on an itty bitty mobile screen   
+    if (window.innerWidth < 1000) {
+        const numToRemove = Math.floor((1000 - window.innerWidth) / 100);
+        for (let i = 0; i < numToRemove; i++) {
+            cloudsProps.pop();
+        }
+    }
+
     return (
         <>
             {cloudsProps.map((cloudProps) => {
