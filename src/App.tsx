@@ -239,10 +239,10 @@ const SkyBackground = () => {
               <SignUpButton
                 onClick={
                   () => {
-                    window.open("https://forms.gle/j5VCCmBeDSmQYa6x6", "_blank");
+                    window.open("https://forms.gle/DswuFCy1NvBG5m6Z6", "_blank");
                   }
                 }
-              >Join our Mailing List</SignUpButton>
+              >Join our Team!</SignUpButton>
             </div>
           </Column>
         </Row>
