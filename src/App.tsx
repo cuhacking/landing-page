@@ -234,7 +234,7 @@ const SkyBackground = () => {
             >
 
               <Wordmark width="400px" />
-              <Subheading>January-February 2024</Subheading>
+              {/* <Subheading>January-February 2024</Subheading> */}
               <Subheading2>Carleton's Official Hackathon</Subheading2>
               <SignUpButton
                 onClick={
