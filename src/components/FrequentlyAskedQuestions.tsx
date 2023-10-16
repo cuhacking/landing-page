@@ -1,4 +1,3 @@
-import React from 'react';
 import { QuestionAccordion } from "./QuestionAccordion";
 import { Section } from "./Section";
 import { Column } from "./util";

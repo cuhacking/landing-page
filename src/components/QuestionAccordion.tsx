@@ -1,4 +1,5 @@
 import { useStyletron } from "baseui";
+import { Modal } from "baseui/modal";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
