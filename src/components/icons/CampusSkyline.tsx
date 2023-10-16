@@ -83,49 +83,53 @@ export const Cloud = (props: CloudProps) => {
 
 export const Clouds = () => {
 
+    const getRandomCloud = (): string => {
+        return CLOUDS[Math.floor(Math.random() * CLOUDS.length)];
+    }
+
     const cloudsProps: CloudProps[] = [
         {
             top: "10px",
             left: "20px",
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         },
         {
             top: "220px",
             left: "220px",
             blurry: true,
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         },
         {
             top: "230px",
             left: "530px",
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         },
         {
             top: "150px",
             left: "1000px",
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         },
         {
             top: "140px",
             left: "740px",
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         },
         {
             top: "304px",
             left: "440px",
             blurry: true,
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         },
         {
             top: "59px",
             left: "787px",
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         },
         {
             top: "92px",
             blurry: true,
             left: "1332px",
-            cloud: CLOUDS[Math.floor(Math.random() * CLOUDS.length)],
+            cloud: getRandomCloud(),
         }
     ]
 

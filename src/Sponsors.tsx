@@ -1,16 +1,12 @@
-import { Row } from "./App";
+
 import { useStyletron } from "baseui";
 import { PAST_SPONSOR_IMAGES } from "./cuhacking-past-sponsors/cuHackingPastSponsors";
+import { Row } from "./components/util";
 
 
 export const Sponsors = () => {
     const [css, _$theme] = useStyletron();
-
     const images = PAST_SPONSOR_IMAGES;
-
-    /*
-        Render all of these images in a grid and have the grid collapse on mobile
-    */
 
     return (
         <div
