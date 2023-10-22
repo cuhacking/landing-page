@@ -1,0 +1,96 @@
+:root {
+  --light-blue-branding: #C5DFF8;
+  --med-blue-branding: #a6bae0;
+  --dark-blue-branding: #2A2547;
+  --pink-branding: #EC9292;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+#apply-background {
+  position: fixed;
+  z-index: -1000;
+  width: 100%;
+  height: 100%;
+
+  background: var(--light-blue-branding);
+}
+
+#apply-form {
+  display: grid;
+  margin: auto;
+  color: var(--dark-blue-branding);
+  width: 70%;
+  grid-template: 1fr / 1fr;
+}
+
+.apply-question-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.apply-question-card div:first-child {
+  width: 100%;
+}
+
+.apply-question {
+  display: block;
+  margin-bottom: 1em;
+  font-weight: 600;
+  font-size: 1.4em;
+}
+
+.apply-text-input {
+  all: unset;
+  margin-bottom: 1em;
+  width: 100%;
+  font-size: 1.5em;
+  border-bottom: 3px solid var(--dark-blue-branding);
+}
+
+.apply-radio {
+  display: flex;
+  align-items: center;
+  background: var(--med-blue-branding);
+  margin: 0.55em auto;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.apply-radio input[type="radio"] {
+  appearance: none;
+  width: 1.4em;
+  height: 1.4em;
+  border: 2px solid var(--light-blue-branding);
+  border-radius: 3px;
+
+  display: grid;
+  place-content: center;
+}
+
+.apply-radio input[type="radio"]:checked {
+  background-color: var(--light-blue-branding);
+}
+
+.apply-radio label {
+  margin-left: 10px;
+  font-size: 1.4em;
+}
+
+.apply-ok-button {
+  color: var(--light-blue-branding);
+  background-color: var(--pink-branding);
+  float: right;
+  margin-bottom: 1.5em;
+  width: 4em;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 1px 15px;
+  border-radius: 4px;
+}
+

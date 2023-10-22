@@ -1,3 +1,4 @@
+import "./Apply.css";
 import { useStyletron } from "baseui";
 import { useState } from "react";
 
@@ -78,10 +79,13 @@ export const Apply = () => {
     };
 
     return (
-        <div>
-            Join cuHacking 2024!
+        <div className="up">
+            <div id="apply-background">
+                <div id="apply-background_blue-gradient"></div>
+                <div id="apply-background_pink-gradient"></div>
+            </div>
             
-            <form>
+            <form id="apply-form">
                 {questions.map((q, index) => 
                     {
                     if (q.type == "text"){
@@ -111,33 +115,40 @@ export const TextInput = (props: {
                                 }) => {
     
     return (
-        <div>
-            <label htmlFor={props.questionId}>{props.question}</label>
-            <input type="text" id={props.questionId} onKeyUp={props.handleEnterKey} value={props.variable} onChange={(e)=>props.setVar(e.target.value)}></input>
+        <div className="apply-question-card">
+            <div>
+            <label className="apply-question" htmlFor={props.questionId}>{props.question}</label>
+            <input className="apply-text-input" type="text" id={props.questionId} onKeyUp={props.handleEnterKey} value={props.variable} onChange={(e)=>props.setVar(e.target.value)}></input>
+            <div className="apply-ok-button">OK</div>
+            </div>
         </div>
     )
 }
 
 export const MultipleChoice = ( props: { question: string, choices: string[], questionId: string, handleEnterKey: React.KeyboardEventHandler<HTMLInputElement> }) => {
     return (
-        <div>
-            <p>{props.question}</p> 
+        <div className="apply-question-card">
+            <div>
+            <p className="apply-question">{props.question} </p> 
             {
                 props.choices.map((choice, index) => (
-                    <div key={index}>
+                    <div className="apply-radio" key={index}>
                         <input type="radio" id={props.questionId.concat(index.toString())} name={props.questionId} onKeyUp={props.handleEnterKey}></input>
                         <label htmlFor={props.questionId.concat(index.toString())}>{choice}</label> <br></br>
                     </div>
                 ))
             }
+            <div className="apply-ok-button">OK</div>
+            </div>
         </div>
     )
 }
 
 export const Dropdown = ( props: { question: string, choices: string[], questionId: string }) => {
     return (
-        <div>
-            <label htmlFor={props.questionId}>{props.question}</label>
+        <div className="apply-question-card">
+            <div>
+            <label className="apply-question" htmlFor={props.questionId}>{props.question}</label>
             <select name={props.questionId} id={props.questionId}>
 
                 {props.choices.map((choice, index) => (
@@ -145,6 +156,8 @@ export const Dropdown = ( props: { question: string, choices: string[], question
                 ))}
 
             </select>
+            <div className="apply-ok-button">OK</div>
+            </div>
         </div>
     )
 }
