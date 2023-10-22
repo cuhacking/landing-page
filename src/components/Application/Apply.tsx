@@ -24,6 +24,18 @@ export const Apply = () => {
             setVar: setlname
         },
         {
+            type: "dropdown",
+            question: "What year are you in?",
+            choices: [
+                "First year",
+                "Second year",
+                "Third year",
+                "Fourth year",
+                "Other"
+            ],
+            questionId: "year2"
+        },
+        {
             type: "mc",
             question: "What school do you go to?",
             choices: [
@@ -47,8 +59,8 @@ export const Apply = () => {
         }
     ]
 
-    const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        // console.log(e.key);
+    const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>) => {
+        console.log(e.key);
         if (e.key == "Enter" || e.key == "ArrowDown"){
             if(inputNumber < questions.length - 1){
                 setInputNumber(inputNumber+1);
@@ -68,8 +80,8 @@ export const Apply = () => {
                 setInputNumber(inputNumber-1);
             }
 
-            let id = questions[inputNumber+1].questionId;
-            if (questions[inputNumber+1].type == "mc") {
+            let id = questions[inputNumber-1].questionId;
+            if (questions[inputNumber-1].type == "mc") {
                 id = id.concat("0");
             }
 
@@ -89,13 +101,13 @@ export const Apply = () => {
                 {questions.map((q, index) => 
                     {
                     if (q.type == "text"){
-                        return <TextInput key={index} question={q.question} questionId={q.questionId} variable={q.variable} setVar={q.setVar} handleEnterKey={handleEnterKey} /> 
+                        return <TextInput key={index} question={q.question} questionId={q.questionId} variable={q.variable} setVar={q.setVar} handleEnterKey={handleEnterKey} setInputNumber={setInputNumber} index={index} /> 
                     }
                     else if (q.type == "mc"){
-                        return <MultipleChoice key={index} question={q.question} choices={q.choices} questionId={q.questionId} handleEnterKey={handleEnterKey} />
+                        return <MultipleChoice key={index} question={q.question} choices={q.choices} questionId={q.questionId} handleEnterKey={handleEnterKey} setInputNumber={setInputNumber} index={index} />
                     }
                     else if (q.type == "dropdown"){
-                        return <Dropdown key={index} question={q.question} choices={q.choices} questionId={q.questionId} />
+                        return <Dropdown key={index} question={q.question} choices={q.choices} questionId={q.questionId} handleEnterKey={handleEnterKey} setInputNumber={setInputNumber} index={index} />
                     }
                     
                     }
@@ -106,19 +118,19 @@ export const Apply = () => {
     );
 }
 
-export const TextInput = (props: { 
-                                    question: string, 
-                                    questionId: string, 
-                                    variable: string, 
-                                    setVar: React.Dispatch<React.SetStateAction<string>>,
-                                    handleEnterKey: React.KeyboardEventHandler<HTMLInputElement>
+const handleInputNumber = (setInputNumber: React.Dispatch<React.SetStateAction<number>>, index: number) => {
+    return setInputNumber(index);
+}
+
+export const TextInput = (props: { question: string, questionId: string, variable: string, setVar: React.Dispatch<React.SetStateAction<string>>,
+                                   handleEnterKey: React.KeyboardEventHandler<HTMLInputElement>, setInputNumber: React.Dispatch<React.SetStateAction<number>>, index: number
                                 }) => {
     
     return (
         <div className="apply-question-card">
             <div>
             <label className="apply-question" htmlFor={props.questionId}>{props.question}</label>
-            <input className="apply-text-input" type="text" id={props.questionId} onKeyUp={props.handleEnterKey} value={props.variable} onChange={(e)=>props.setVar(e.target.value)}></input>
+            <input className="apply-text-input" type="text" id={props.questionId} onKeyUp={props.handleEnterKey} onClick={() => {handleInputNumber(props.setInputNumber, props.index)}} value={props.variable} onChange={(e)=>props.setVar(e.target.value)}></input>
             <div className="apply-button">BACK</div>
             <div className="apply-button">NEXT</div>
             </div>
@@ -126,7 +138,9 @@ export const TextInput = (props: {
     )
 }
 
-export const MultipleChoice = ( props: { question: string, choices: string[], questionId: string, handleEnterKey: React.KeyboardEventHandler<HTMLInputElement> }) => {
+export const MultipleChoice = ( props: { question: string, choices: string[], questionId: string, handleEnterKey: React.KeyboardEventHandler<HTMLInputElement>,
+                                        setInputNumber: React.Dispatch<React.SetStateAction<number>>, index: number
+                                    }) => {
     return (
         <div className="apply-question-card">
             <div>
@@ -134,7 +148,7 @@ export const MultipleChoice = ( props: { question: string, choices: string[], qu
             {
                 props.choices.map((choice, index) => (
                     <div className="apply-radio" key={index}>
-                        <input type="radio" id={props.questionId.concat(index.toString())} name={props.questionId} onKeyUp={props.handleEnterKey}></input>
+                        <input type="radio" id={props.questionId.concat(index.toString())} name={props.questionId} onKeyUp={props.handleEnterKey} onClick={() => {handleInputNumber(props.setInputNumber, props.index)}} ></input>
                         <label htmlFor={props.questionId.concat(index.toString())}>{choice}</label> <br></br>
                     </div>
                 ))
@@ -146,15 +160,16 @@ export const MultipleChoice = ( props: { question: string, choices: string[], qu
     )
 }
 
-export const Dropdown = ( props: { question: string, choices: string[], questionId: string }) => {
+export const Dropdown = ( props: { question: string, choices: string[], questionId: string, handleEnterKey: React.KeyboardEventHandler<HTMLSelectElement>, 
+                                setInputNumber: React.Dispatch<React.SetStateAction<number>>, index: number }) => {
     return (
         <div className="apply-question-card">
             <div>
             <label className="apply-question" htmlFor={props.questionId}>{props.question}</label>
-            <select className="apply-dropdown" name={props.questionId} id={props.questionId}>
+            <select className="apply-dropdown" name={props.questionId} id={props.questionId} onKeyUp={props.handleEnterKey} >
 
                 {props.choices.map((choice, index) => (
-                    <option key={index} id={index.toString()} value={choice}>{choice}</option>
+                    <option key={index} id={index.toString()} value={choice} onClick={() => {handleInputNumber(props.setInputNumber, props.index)}}>{choice}</option>
                 ))}
 
             </select>
