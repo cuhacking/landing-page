@@ -119,7 +119,8 @@ export const TextInput = (props: {
             <div>
             <label className="apply-question" htmlFor={props.questionId}>{props.question}</label>
             <input className="apply-text-input" type="text" id={props.questionId} onKeyUp={props.handleEnterKey} value={props.variable} onChange={(e)=>props.setVar(e.target.value)}></input>
-            <div className="apply-ok-button">OK</div>
+            <div className="apply-button">BACK</div>
+            <div className="apply-button">NEXT</div>
             </div>
         </div>
     )
@@ -138,7 +139,8 @@ export const MultipleChoice = ( props: { question: string, choices: string[], qu
                     </div>
                 ))
             }
-            <div className="apply-ok-button">OK</div>
+            <div className="apply-button">BACK</div>
+            <div className="apply-button">NEXT</div>
             </div>
         </div>
     )
@@ -149,14 +151,15 @@ export const Dropdown = ( props: { question: string, choices: string[], question
         <div className="apply-question-card">
             <div>
             <label className="apply-question" htmlFor={props.questionId}>{props.question}</label>
-            <select name={props.questionId} id={props.questionId}>
+            <select className="apply-dropdown" name={props.questionId} id={props.questionId}>
 
                 {props.choices.map((choice, index) => (
                     <option key={index} id={index.toString()} value={choice}>{choice}</option>
                 ))}
 
             </select>
-            <div className="apply-ok-button">OK</div>
+            <div className="apply-button">BACK</div>
+            <div className="apply-button">NEXT</div>
             </div>
         </div>
     )

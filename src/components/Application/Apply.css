@@ -76,21 +76,52 @@
   background-color: var(--light-blue-branding);
 }
 
+.apply-radio input[type="radio"]:focus-visible {
+  outline: unset;
+  border: 2px solid var(--pink-branding);
+}
+
 .apply-radio label {
   margin-left: 10px;
   font-size: 1.4em;
 }
 
-.apply-ok-button {
+.apply-dropdown {
+  display: block;
+  width: 100%;
+  color: var(--dark-blue-branding);
+  background: var(--med-blue-branding);
+  font-size: 1.4em;
+  margin: 0.55em auto;
+  padding: 10px 10px;
+  border: unset;
+  border-radius: 4px;
+}
+
+.apply-dropdown:after {
+  content: "";
+  position: absolute;
+  color: #EC9292;
+  right: 200px;
+}
+
+.apply-dropdown:focus {
+  outline: 2px solid var(--pink-branding);
+}
+
+.apply-button {
   color: var(--light-blue-branding);
   background-color: var(--pink-branding);
-  float: right;
+  float: left;
   margin-bottom: 1.5em;
-  width: 4em;
   text-align: center;
   font-weight: 700;
   letter-spacing: 0.1em;
-  padding: 1px 15px;
+  width: 4.5em;
   border-radius: 4px;
+}
+
+.apply-button:last-child {
+  float: right;
 }
 
