@@ -61,6 +61,11 @@
   border-radius: 4px;
 }
 
+.apply-radio:hover {
+  cursor: pointer;
+  filter: brightness(110%);
+}
+
 .apply-radio input[type="radio"] {
   appearance: none;
   width: 1.4em;
@@ -81,9 +86,23 @@
   border: 2px solid var(--pink-branding);
 }
 
+.apply-radio input[type="radio"]:hover{
+  cursor: pointer;
+  filter: brightness(110%);
+}
+
 .apply-radio label {
   margin-left: 10px;
   font-size: 1.4em;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.apply-radio label:hover{
+  cursor: pointer;
+  filter: brightness(110%);
 }
 
 .apply-dropdown {
@@ -119,6 +138,12 @@
   letter-spacing: 0.1em;
   width: 4.5em;
   border-radius: 4px;
+}
+
+.apply-button:hover {
+  cursor: pointer;
+  filter: brightness(110%);
+  outline: 2px solid var(--med-blue-branding);
 }
 
 .apply-button:last-child {
