@@ -11,6 +11,13 @@ interface Question {
     choices: string[]
 }
 
+interface FormOutput {
+    firstName: string,
+    lastName: string,
+    school: string,
+    year: string
+}
+
 export const questions: Question[] = [
     {
         type: "text",
@@ -65,7 +72,7 @@ export const questions: Question[] = [
 ]
 
 export const Apply = () => {
-    
+
     useEffect(() => {
         window.scrollTo(0, 0);
         document.getElementById(questions[0].questionId)?.focus();
@@ -90,7 +97,7 @@ export const Apply = () => {
                         return <Dropdown key={index} question={q.question} choices={q.choices} questionId={q.questionId} index={index} />
                     }
                 })}
-                
+
             </form>
         </div>
     );
