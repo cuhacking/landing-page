@@ -23,16 +23,12 @@ export const questions: Question[] = [
         type: "text",
         question: "First Name: ",
         questionId: "fname",
-        // variable: fname,
-        // setVar: setfname,
         choices: []
     },
     {
         type: "text",
         question: "Last Name: ",
         questionId: "lname",
-        // variable: lname,
-        // setVar: setlname,
         choices: []
     },
     {

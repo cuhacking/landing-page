@@ -1,152 +1,133 @@
 :root {
-  --light-blue-branding: #C5DFF8;
-  --med-blue-branding: #a6bae0;
-  --dark-blue-branding: #2A2547;
-  --pink-branding: #EC9292;
+	--white-blue-branding: #E8EBEF;
+	--light-blue-branding: #C5DFF8;
+	--med-blue-branding: #a6bae0;
+	--dark-blue-branding: #2A2547;
+	--pink-branding: #EC9292;
 }
 
 * {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 #apply-background {
-  position: fixed;
-  z-index: -1000;
-  width: 100%;
-  height: 100%;
-
-  background: var(--light-blue-branding);
+	background: var(--light-blue-branding);
+	position: fixed;
+	z-index: -1000;
+	width: 100%;
+	height: 100%;
 }
 
 #apply-form {
-  display: grid;
-  margin: auto;
-  color: var(--dark-blue-branding);
-  width: 70%;
-  grid-template: 1fr / 1fr;
+	color: var(--dark-blue-branding);
+	display: grid;
+	grid-template: 1fr / 1fr;
+	margin: auto;
+	width: 70%;
 }
 
 .apply-question-card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100vh;
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 100vh;
 }
 
 .apply-question-card div:first-child {
-  width: 100%;
+	width: 100%;
 }
 
 .apply-question {
-  display: block;
-  margin-bottom: 1em;
-  font-weight: 600;
-  font-size: 1.4em;
+	display: block;
+	margin-bottom: 1em;
+	font-weight: 600;
+	font-size: 1.4em;
 }
 
 .apply-text-input {
-  all: unset;
-  margin-bottom: 1em;
-  width: 100%;
-  font-size: 1.5em;
-  border-bottom: 3px solid var(--dark-blue-branding);
+	all: unset;
+	margin-bottom: 1em;
+	border-bottom: 3px solid var(--dark-blue-branding);
+	width: 100%;
+	font-size: 1.5em;
+	
 }
 
 .apply-radio {
-  display: flex;
-  align-items: center;
-  background: var(--med-blue-branding);
-  margin: 0.55em auto;
-  padding: 5px 10px;
-  border-radius: 4px;
+	background: var(--med-blue-branding);
+	display: flex;
+	align-items: center;
+	margin: 0.55em auto;
+	padding: 5px 10px;
+	border-radius: 4px;
 }
 
 .apply-radio:hover {
-  cursor: pointer;
-  filter: brightness(110%);
+	cursor: pointer;
+	filter: brightness(105%);
 }
 
 .apply-radio input[type="radio"] {
-  appearance: none;
-  width: 1.4em;
-  height: 1.4em;
-  border: 2px solid var(--light-blue-branding);
-  border-radius: 3px;
-
-  display: grid;
-  place-content: center;
+	border: 2px solid var(--light-blue-branding);
+	appearance: none;
+	width: 1.4em;
+	height: 1.4em;
+	border-radius: 3px;
 }
 
 .apply-radio input[type="radio"]:checked {
-  background-color: var(--light-blue-branding);
+	background-color: var(--light-blue-branding);
 }
 
 .apply-radio input[type="radio"]:focus-visible {
-  outline: unset;
-  border: 2px solid var(--pink-branding);
-}
-
-.apply-radio input[type="radio"]:hover{
-  cursor: pointer;
-  filter: brightness(110%);
+	outline: unset;
+	border: 2px solid var(--pink-branding);
 }
 
 .apply-radio label {
-  margin-left: 10px;
-  font-size: 1.4em;
-  width: 100%;
-  margin: 0 auto;
-  padding: 5px 10px;
-  border-radius: 4px;
-}
-
-.apply-radio label:hover{
-  cursor: pointer;
-  filter: brightness(110%);
+	font-size: 1.4em;
+	width: 100%;
+	margin: 0 auto;
+	padding: 5px 10px;
+	border-radius: 4px;
 }
 
 .apply-dropdown {
-  display: block;
-  width: 100%;
-  color: var(--dark-blue-branding);
-  background: var(--med-blue-branding);
-  font-size: 1.4em;
-  margin: 0.55em auto;
-  padding: 10px 10px;
-  border: unset;
-  border-radius: 4px;
-}
-
-.apply-dropdown:after {
-  content: "";
-  position: absolute;
-  color: #EC9292;
-  right: 200px;
+	color: var(--dark-blue-branding);
+	background: var(--med-blue-branding);
+	display: block;
+	margin: 0.55em auto;
+	padding: 10px 10px;
+	width: 100%;
+	font-size: 1.4em;
+	border: unset;
+	border-radius: 0.3em;
 }
 
 .apply-dropdown:focus {
-  outline: 2px solid var(--pink-branding);
+	outline: 2px solid var(--pink-branding);
 }
 
 .apply-button {
-  color: var(--light-blue-branding);
-  background-color: var(--pink-branding);
-  float: left;
-  margin-bottom: 1.5em;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  width: 4.5em;
-  border-radius: 4px;
+	color: var(--white-blue-branding);
+	background-color: var(--pink-branding);
+	float: right;
+	margin: 0 0.4em 0 0.1em;
+	padding: 0.18em 0.6em;
+	text-align: center;
+	line-height: 0.5;
+	font-weight: 650;
+	font-size: 1.8em;
+	border-radius: 0.2em;
 }
 
 .apply-button:hover {
-  cursor: pointer;
-  filter: brightness(110%);
-  outline: 2px solid var(--med-blue-branding);
+	outline: 2px solid var(--med-blue-branding);
 }
 
-.apply-button:last-child {
-  float: right;
+.apply-radio input[type="radio"]:hover,
+.apply-dropdown:hover,
+.apply-button:hover {
+	cursor: pointer;
+	filter: brightness(110%);
 }
-
