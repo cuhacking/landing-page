@@ -14,6 +14,7 @@ export const App = () => {
         {
           backgroundColor: "#C5DFF8",
           background: "#C5DFF8",
+          overflow: "hidden"
         }
       }
     >
