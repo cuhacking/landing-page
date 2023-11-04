@@ -1,5 +1,5 @@
-import { LabelHTMLAttributes} from "react";
-import { questions } from "./Apply";
+import { LabelHTMLAttributes, useState} from "react";
+import { Question } from "./Apply";
 
 let inputNumber = 0;
 
@@ -22,8 +22,11 @@ const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>) => {
 	}
 };
 
-const handleNextButton = () => {
-	inputNumber++;
+const handleNextButton = (questions: Question[]) => {
+  if (inputNumber < questions.length - 1) {
+  	inputNumber++;
+  }
+  
 	let id = questions[inputNumber].questionId;
 	if (questions[inputNumber].type == "mc") {
 		id = id.concat("0");
@@ -32,8 +35,11 @@ const handleNextButton = () => {
 	document.getElementById(id)?.focus();
 };
 
-const handleBackButton = () => {
-	inputNumber--;
+const handleBackButton = (questions: Question[]) => {
+  if (inputNumber > 0) {
+  	inputNumber--;
+  }
+
 	let id = questions[inputNumber].questionId;
 	if (questions[inputNumber].type == "mc") {
 		id = id.concat("0");
@@ -41,6 +47,10 @@ const handleBackButton = () => {
 
 	document.getElementById(id)?.focus();
 };
+
+// function handleOnChange(e: React.FormEvent<HTMLDivElement>, setFunction: React.Dispatch<React.SetStateAction<string>>){
+//   setFunction(e.target.value);
+// }
 
 export const Button = (props: { children: React.ReactNode; onClick: () => void }) => {
 	return (
@@ -90,10 +100,7 @@ export const TextInput = (props: {
 };
 
 export const MultipleChoice = (props: {
-	question: string;
-	choices: string[];
-	questionId: string;
-	index: number;
+  question: string, choices: string[], questionId: string, variable: string, setVar: React.Dispatch<React.SetStateAction<string>>, index: number, questions: Question[]
 }) => {
 	return (
 		<QuestionCard>
@@ -116,10 +123,7 @@ export const MultipleChoice = (props: {
 };
 
 export const Dropdown = (props: {
-	question: string;
-	choices: string[];
-	questionId: string;
-	index: number;
+  question: string, choices: string[], questionId: string, variable: string, setVar: React.Dispatch<React.SetStateAction<string>>, index: number, questions: Question[]
 }) => {
 	return (
 		<QuestionCard>
