@@ -1,5 +1,5 @@
-import { LabelHTMLAttributes, useState} from "react";
-import { Question } from "./Apply";
+import { LabelHTMLAttributes} from "react";
+import { Question, FormOutput } from "./Apply";
 
 let inputNumber = 0;
 
@@ -7,7 +7,7 @@ const handleInputNumber = (index: number) => {
 	inputNumber = index;
 };
 
-const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>) => {
+const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>, questions: Question[]) => {
 	if (e.key == "Enter") {
 		if (inputNumber < questions.length - 1) {
 			inputNumber++;
@@ -48,10 +48,6 @@ const handleBackButton = (questions: Question[]) => {
 	document.getElementById(id)?.focus();
 };
 
-// function handleOnChange(e: React.FormEvent<HTMLDivElement>, setFunction: React.Dispatch<React.SetStateAction<string>>){
-//   setFunction(e.target.value);
-// }
-
 export const Button = (props: { children: React.ReactNode; onClick: () => void }) => {
 	return (
 		<div className="apply-button" onClick={props.onClick}>
@@ -68,13 +64,13 @@ export const Label = (props: { children: React.ReactNode } & LabelHTMLAttributes
 	);
 };
 
-export const QuestionCard = (props: { children: React.ReactNode }) => {
+export const QuestionCard = (props: { children: React.ReactNode, questions: Question[] }) => {
 	return (
 		<div className="apply-question-card">
 			<div>
 				{props.children}
-				<Button onClick={handleNextButton}>{">"}</Button>
-				<Button onClick={handleBackButton}>{"<"}</Button>
+				<Button onClick={() => handleNextButton(props.questions)}>{">"}</Button>
+				<Button onClick={() => handleBackButton(props.questions)}>{"<"}</Button>
 			</div>
 		</div>
 	);
@@ -82,28 +78,40 @@ export const QuestionCard = (props: { children: React.ReactNode }) => {
 
 export const TextInput = (props: {
 	question: string;
-	questionId: string /*variable: string, setVar: React.Dispatch<React.SetStateAction<string>>,*/;
+	questionId: string;
+  variable: string, 
+  setVar: React.Dispatch<React.SetStateAction<string>>;
 	index: number;
+  questions: Question[];
 }) => {
 	return (
-		<QuestionCard>
+		<QuestionCard questions={props.questions}>
 			<Label htmlFor={props.questionId}>{props.question}</Label>
 			<input
 				className="apply-text-input"
 				type="text"
+        name={props.questionId}
 				id={props.questionId}
-				onKeyUp={handleEnterKey}
-				onClick={() => { handleInputNumber(props.index);}} /*value={props.variable} onChange={(e) => props.setVar(e.target.value)}*/
+				onKeyUp={(e) => {handleEnterKey(e, props.questions)}}
+				onClick={() => { handleInputNumber(props.index);}}
+        value={props.variable} 
+        onChange={(e) => props.setVar(e.target.value)}
 			></input>
 		</QuestionCard>
 	);
 };
 
 export const MultipleChoice = (props: {
-  question: string, choices: string[], questionId: string, variable: string, setVar: React.Dispatch<React.SetStateAction<string>>, index: number, questions: Question[]
+  question: string;
+  choices: string[];
+  questionId: string;
+  variable: string;
+  setVar: React.Dispatch<React.SetStateAction<string>>;
+  index: number;
+  questions: Question[];
 }) => {
 	return (
-		<QuestionCard>
+		<QuestionCard questions={props.questions}>
 			<Label htmlFor={props.questionId}>{props.question}</Label>
 			{props.choices.map((choice, index) => (
 				<div className="apply-radio" key={index}>
@@ -111,8 +119,10 @@ export const MultipleChoice = (props: {
 						type="radio"
 						id={props.questionId.concat(index.toString())}
 						name={props.questionId}
-						onKeyUp={handleEnterKey}
+            value={choice} 
+            onKeyUp={(e) => {handleEnterKey(e, props.questions);}} 
 						onClick={() => {handleInputNumber(props.index);}}
+            onChange={() => {props.setVar(choice);}}
 					></input>
 					<label htmlFor={props.questionId.concat(index.toString())}>{choice}</label>{" "}
 					<br></br>
@@ -123,18 +133,25 @@ export const MultipleChoice = (props: {
 };
 
 export const Dropdown = (props: {
-  question: string, choices: string[], questionId: string, variable: string, setVar: React.Dispatch<React.SetStateAction<string>>, index: number, questions: Question[]
+  question: string;
+  choices: string[];
+  questionId: string;
+  variable: string;
+  setVar: React.Dispatch<React.SetStateAction<string>>;
+  index: number;
+  questions: Question[];
 }) => {
 	return (
-		<QuestionCard>
+		<QuestionCard questions={props.questions}>
 			<Label htmlFor={props.questionId}>{props.question}</Label>
 			<select
 				className="apply-dropdown"
 				name={props.questionId}
 				id={props.questionId}
-				onKeyUp={handleEnterKey}
+				onKeyUp={(e) => {handleEnterKey(e, props.questions);}}
 				onClick={() => { handleInputNumber(props.index);}}
-			>
+        onChange={(e) => {props.setVar(e.target.value);}}
+      >
 				{props.choices.map((choice, index) => (
 					<option key={index} id={index.toString()} value={choice}>
 						{choice}
@@ -144,3 +161,26 @@ export const Dropdown = (props: {
 		</QuestionCard>
 	);
 };
+
+const getProperty= (obj: FormOutput, key: keyof FormOutput) => {
+  return obj[key];
+}
+
+export const ReviewQuestions = (props: {
+  questions: Question[];
+  answers: FormOutput;
+
+}) => {
+  return (
+    <div>
+      <h1>REVIEW APPLICATION</h1>
+      <br></br>
+      {props.questions.map((q, index) => (
+        <div key={index}>
+          <p>{q.question} {getProperty(props.answers, q.questionId as keyof FormOutput)}</p>
+          <br></br>
+        </div>
+      ))}
+    </div>
+  )
+}
