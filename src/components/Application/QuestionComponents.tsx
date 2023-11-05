@@ -7,18 +7,30 @@ const handleInputNumber = (index: number) => {
 	inputNumber = index;
 };
 
+const goToNextQuestion = (questions: Question[], anchor: string) => {
+	let id = questions[inputNumber].questionId;
+	if (questions[inputNumber].type == "mc") {
+		id = id.concat("0");
+	}
+
+	var loc = document.location.toString().split('#')[0];
+	document.location = loc + anchor;
+
+	document.getElementById(id)?.focus({ preventScroll: true });
+	
+}
+
+const getAnchor = (index: number) => {
+	return `#question${index}`;
+}
+
 const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>, questions: Question[]) => {
 	if (e.key == "Enter") {
 		if (inputNumber < questions.length - 1) {
 			inputNumber++;
 		}
 
-		let id = questions[inputNumber].questionId;
-		if (questions[inputNumber].type == "mc") {
-			id = id.concat("0");
-		}
-
-		document.getElementById(id)?.focus();
+		goToNextQuestion(questions, getAnchor(inputNumber));
 	}
 };
 
@@ -26,13 +38,8 @@ const handleNextButton = (questions: Question[]) => {
   if (inputNumber < questions.length - 1) {
   	inputNumber++;
   }
-  
-	let id = questions[inputNumber].questionId;
-	if (questions[inputNumber].type == "mc") {
-		id = id.concat("0");
-	}
 
-	document.getElementById(id)?.focus();
+	goToNextQuestion(questions, getAnchor(inputNumber));
 };
 
 const handleBackButton = (questions: Question[]) => {
@@ -40,12 +47,7 @@ const handleBackButton = (questions: Question[]) => {
   	inputNumber--;
   }
 
-	let id = questions[inputNumber].questionId;
-	if (questions[inputNumber].type == "mc") {
-		id = id.concat("0");
-	}
-
-	document.getElementById(id)?.focus();
+	goToNextQuestion(questions, getAnchor(inputNumber));
 };
 
 export const Button = (props: { children: React.ReactNode; onClick: () => void }) => {
@@ -64,9 +66,9 @@ export const Label = (props: { children: React.ReactNode } & LabelHTMLAttributes
 	);
 };
 
-export const QuestionCard = (props: { children: React.ReactNode, questions: Question[] }) => {
+export const QuestionCard = (props: { children: React.ReactNode, questions: Question[], index: number }) => {
 	return (
-		<div className="apply-question-card">
+		<div className="apply-question-card" id={`question${props.index}`}>
 			<div>
 				{props.children}
 				<Button onClick={() => handleNextButton(props.questions)}>{">"}</Button>
@@ -79,13 +81,13 @@ export const QuestionCard = (props: { children: React.ReactNode, questions: Ques
 export const TextInput = (props: {
 	question: string;
 	questionId: string;
-  variable: string, 
-  setVar: React.Dispatch<React.SetStateAction<string>>;
+	variable: string, 
+	setVar: React.Dispatch<React.SetStateAction<string>>;
 	index: number;
-  questions: Question[];
+  	questions: Question[];
 }) => {
 	return (
-		<QuestionCard questions={props.questions}>
+		<QuestionCard questions={props.questions} index={props.index} >
 			<Label htmlFor={props.questionId}>{props.question}</Label>
 			<input
 				className="apply-text-input"
@@ -111,7 +113,7 @@ export const MultipleChoice = (props: {
   questions: Question[];
 }) => {
 	return (
-		<QuestionCard questions={props.questions}>
+		<QuestionCard questions={props.questions} index={props.index} >
 			<Label htmlFor={props.questionId}>{props.question}</Label>
 			{props.choices.map((choice, index) => (
 				<div className="apply-radio" key={index}>
@@ -142,7 +144,7 @@ export const Dropdown = (props: {
   questions: Question[];
 }) => {
 	return (
-		<QuestionCard questions={props.questions}>
+		<QuestionCard questions={props.questions} index={props.index} >
 			<Label htmlFor={props.questionId}>{props.question}</Label>
 			<select
 				className="apply-dropdown"
@@ -150,8 +152,8 @@ export const Dropdown = (props: {
 				id={props.questionId}
 				onKeyUp={(e) => {handleEnterKey(e, props.questions);}}
 				onClick={() => { handleInputNumber(props.index);}}
-        onChange={(e) => {props.setVar(e.target.value);}}
-      >
+        		onChange={(e) => {props.setVar(e.target.value);}}
+      		>
 				{props.choices.map((choice, index) => (
 					<option key={index} id={index.toString()} value={choice}>
 						{choice}
@@ -162,14 +164,13 @@ export const Dropdown = (props: {
 	);
 };
 
-const getProperty= (obj: FormOutput, key: keyof FormOutput) => {
+const getProperty = (obj: FormOutput, key: keyof FormOutput) => {
   return obj[key];
 }
 
 export const ReviewQuestions = (props: {
   questions: Question[];
   answers: FormOutput;
-
 }) => {
   return (
     <div>
@@ -178,6 +179,7 @@ export const ReviewQuestions = (props: {
       {props.questions.map((q, index) => (
         <div key={index}>
           <p>{q.question} {getProperty(props.answers, q.questionId as keyof FormOutput)}</p>
+		  <p><a href={getAnchor(index)}>edit</a></p>
           <br></br>
         </div>
       ))}
