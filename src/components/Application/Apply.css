@@ -50,9 +50,9 @@
 	border-radius: 4px;
 }
 
-.apply-radio:hover {
+.apply-radio:hover, .apply-radio *:hover {
 	cursor: pointer;
-	filter: brightness(105%);
+	filter: brightness(110%);
 }
 
 .apply-radio input[type="radio"] {

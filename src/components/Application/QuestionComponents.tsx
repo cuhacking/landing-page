@@ -121,10 +121,10 @@ export const MultipleChoice = (props: {
 						type="radio"
 						id={props.questionId.concat(index.toString())}
 						name={props.questionId}
-            value={choice} 
-            onKeyUp={(e) => {handleEnterKey(e, props.questions);}} 
+            			value={choice} 
+            			onKeyUp={(e) => {handleEnterKey(e, props.questions);}} 
 						onClick={() => {handleInputNumber(props.index);}}
-            onChange={() => {props.setVar(choice);}}
+            			onChange={() => {props.setVar(choice);}}
 					></input>
 					<label htmlFor={props.questionId.concat(index.toString())}>{choice}</label>{" "}
 					<br></br>
