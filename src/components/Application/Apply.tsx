@@ -6,6 +6,7 @@ export interface Question {
     type: string,
     question: string,
     questionId: string,
+    required: boolean,
     variable: string,
     setVar: React.Dispatch<React.SetStateAction<string>>,
     choices: string[]
@@ -30,6 +31,7 @@ export const Apply = () => {
             type: "text",
             question: "First Name: ",
             questionId: "firstName",
+            required: true,
             variable: fname,
             setVar: setFname,
             choices: []
@@ -38,6 +40,7 @@ export const Apply = () => {
             type: "text",
             question: "Last Name: ",
             questionId: "lastName",
+            required: true,
             variable: lname,
             setVar: setLname,
             choices: []
@@ -46,12 +49,14 @@ export const Apply = () => {
             type: "dropdown",
             question: "What year are you in?",
             choices: [
+                "Select a choice...",
                 "First year",
                 "Second year",
                 "Third year",
                 "Fourth year",
                 "Other"
             ],
+            required: false,
             variable: year2,
             setVar: setYear2,
             questionId: "year2"
@@ -68,6 +73,7 @@ export const Apply = () => {
                 "koala U",
                 "Other"
             ],
+            required: true,
             variable: school,
             setVar: setSchool,
             questionId: "school"
@@ -76,12 +82,14 @@ export const Apply = () => {
             type: "dropdown",
             question: "What year are you in?",
             choices: [
+                "Select a choice...",
                 "First year",
                 "Second year",
                 "Third year",
                 "Fourth year",
                 "Other"
             ],
+            required: true,
             variable: year,
             setVar: setYear,
             questionId: "year"

@@ -1,4 +1,4 @@
-import { LabelHTMLAttributes} from "react";
+import { LabelHTMLAttributes } from "react";
 import { Question, FormOutput } from "./Apply";
 
 let inputNumber = 0;
@@ -6,6 +6,33 @@ let inputNumber = 0;
 const handleInputNumber = (index: number) => {
 	inputNumber = index;
 };
+
+const checkRequired = (question: Question, value?: string) => {
+	if (!question.required)
+		return true;
+
+	if (value === undefined) value = question.variable;
+
+	if(value == "" || (question.type == "dropdown" && value == question.choices[0]))
+		return false;
+
+	return true;
+};
+
+const showErrorMessage = (message: string, id: number) => {
+	let messageElement = document.getElementById(`msg${id}`);
+
+	messageElement!.innerText = message;
+	messageElement!.style.visibility = 'visible';
+
+};
+
+const hideErrorMessage = (id: number) => {
+	let messageElement = document.getElementById(`msg${id}`);
+
+	messageElement!.style.visibility = 'hidden';
+
+}
 
 const goToNextQuestion = (questions: Question[], anchor: string) => {
 	let id = questions[inputNumber].questionId;
@@ -25,6 +52,11 @@ const getAnchor = (index: number) => {
 }
 
 const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>, questions: Question[]) => {
+	if (!checkRequired(questions[inputNumber])){
+		showErrorMessage("Oops! This field is required.", inputNumber);
+		return;
+	}
+
 	if (e.key == "Enter") {
 		if (inputNumber < questions.length - 1) {
 			inputNumber++;
@@ -35,9 +67,14 @@ const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>, questions: Question
 };
 
 const handleNextButton = (questions: Question[]) => {
-  if (inputNumber < questions.length - 1) {
-  	inputNumber++;
-  }
+	if (!checkRequired(questions[inputNumber])){
+		showErrorMessage("Oops! This field is required.", inputNumber);
+		return;
+	}
+
+	if (inputNumber < questions.length - 1) {
+		inputNumber++;
+	} 
 
 	goToNextQuestion(questions, getAnchor(inputNumber));
 };
@@ -49,6 +86,10 @@ const handleBackButton = (questions: Question[]) => {
 
 	goToNextQuestion(questions, getAnchor(inputNumber));
 };
+
+const isRequired = (required: boolean) => {
+	return (required) ? "*" : "";
+}
 
 export const Button = (props: { children: React.ReactNode; onClick: () => void }) => {
 	return (
@@ -71,6 +112,9 @@ export const QuestionCard = (props: { children: React.ReactNode, questions: Ques
 		<div className="apply-question-card" id={`question${props.index}`}>
 			<div>
 				{props.children}
+				<div>
+					<p id={`msg${props.index}`}></p>
+				</div>
 				<Button onClick={() => handleNextButton(props.questions)}>{">"}</Button>
 				<Button onClick={() => handleBackButton(props.questions)}>{"<"}</Button>
 			</div>
@@ -88,16 +132,18 @@ export const TextInput = (props: {
 }) => {
 	return (
 		<QuestionCard questions={props.questions} index={props.index} >
-			<Label htmlFor={props.questionId}>{props.question}</Label>
+			<Label htmlFor={props.questionId}>{props.question} {isRequired(props.questions[props.index].required)}</Label>
 			<input
 				className="apply-text-input"
 				type="text"
-        name={props.questionId}
+    			name={props.questionId}
 				id={props.questionId}
 				onKeyUp={(e) => {handleEnterKey(e, props.questions)}}
 				onClick={() => { handleInputNumber(props.index);}}
-        value={props.variable} 
-        onChange={(e) => props.setVar(e.target.value)}
+        		value={props.variable} 
+        		onChange={(e) => {props.setVar(e.target.value); 
+					if (checkRequired(props.questions[props.index], e.target.value)) hideErrorMessage(props.index);
+				}}
 			></input>
 		</QuestionCard>
 	);
@@ -114,7 +160,7 @@ export const MultipleChoice = (props: {
 }) => {
 	return (
 		<QuestionCard questions={props.questions} index={props.index} >
-			<Label htmlFor={props.questionId}>{props.question}</Label>
+			<Label htmlFor={props.questionId}>{props.question} {isRequired(props.questions[props.index].required)}</Label>
 			{props.choices.map((choice, index) => (
 				<div className="apply-radio" key={index}>
 					<input
@@ -124,7 +170,9 @@ export const MultipleChoice = (props: {
             			value={choice} 
             			onKeyUp={(e) => {handleEnterKey(e, props.questions);}} 
 						onClick={() => {handleInputNumber(props.index);}}
-            			onChange={() => {props.setVar(choice);}}
+            			onChange={() => {props.setVar(choice);
+							if (checkRequired(props.questions[props.index], choice)) hideErrorMessage(props.index);
+						}}
 					></input>
 					<label htmlFor={props.questionId.concat(index.toString())}>{choice}</label>{" "}
 					<br></br>
@@ -145,14 +193,16 @@ export const Dropdown = (props: {
 }) => {
 	return (
 		<QuestionCard questions={props.questions} index={props.index} >
-			<Label htmlFor={props.questionId}>{props.question}</Label>
+			<Label htmlFor={props.questionId}>{props.question} {isRequired(props.questions[props.index].required)}</Label>
 			<select
 				className="apply-dropdown"
 				name={props.questionId}
 				id={props.questionId}
 				onKeyUp={(e) => {handleEnterKey(e, props.questions);}}
 				onClick={() => { handleInputNumber(props.index);}}
-        		onChange={(e) => {props.setVar(e.target.value);}}
+        		onChange={(e) => {props.setVar(e.target.value);
+					if (checkRequired(props.questions[props.index], e.target.value)) hideErrorMessage(props.index);
+				}}
       		>
 				{props.choices.map((choice, index) => (
 					<option key={index} id={index.toString()} value={choice}>
