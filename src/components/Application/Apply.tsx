@@ -1,6 +1,7 @@
 import "./Apply.css";
 import { TextInput, MultipleChoice, Dropdown, ReviewQuestions } from "./QuestionComponents"
 import { useState, useEffect } from "react";
+import {useScrollDirection} from "./s"
 
 export interface Question {
     type: string,
@@ -24,6 +25,9 @@ export const Apply = () => {
     const [year2, setYear2] = useState("");
     const [school, setSchool] = useState("");
     const [year, setYear] = useState("");
+
+    const [scrollDiretion, setScrollDiretion] = useState("");
+    const [questionIndex, setQuestionIndex] = useState(0);
 
     const questions: Question[] = [
         {
@@ -101,7 +105,45 @@ export const Apply = () => {
         year: year
     }
 
-    console.log(output); // debugging: will remove later
+    window.addEventListener('wheel', (event) => {
+        console.log(event.deltaY)
+        if (event.deltaY < 0){
+            setScrollDiretion("up");
+        } else if (event.deltaY > 0 ){
+            setScrollDiretion("down");
+        }
+    });
+
+    window.addEventListener('scrollend', (event) => {
+        if (scrollDiretion == "up" && questionIndex > 0){
+            setQuestionIndex(questionIndex - 1);
+        } else if (scrollDiretion == "down" && questionIndex < (questions.length -1)) {
+            setQuestionIndex(questionIndex + 1);
+        }
+    });
+
+    // window.addEventListener('scrollend', (event) => {
+    //     console.log("fired");
+    //     if (scrollDiretion == "up" && questionIndex > 0){
+    //         setQuestionIndex(questionIndex - 1);
+    //     } else if (scrollDiretion == "down" && questionIndex < 5) {
+    //         setQuestionIndex(questionIndex + 1);
+    //     }
+    // });
+
+    const questionRender = (q: Question, index: number) => {
+        if (q.type == "text") {
+            return <TextInput key={index} question={q.question} questionId={q.questionId} variable={q.variable} setVar={q.setVar} index={index} questions={questions} />
+        }
+        else if (q.type == "mc") {
+            return <MultipleChoice key={index} question={q.question} choices={q.choices} questionId={q.questionId} variable={q.variable} setVar={q.setVar} index={index} questions={questions} />
+        }
+        else if (q.type == "dropdown") {
+            return <Dropdown key={index} question={q.question} choices={q.choices} questionId={q.questionId} variable={q.variable} setVar={q.setVar} index={index} questions={questions} />
+        }
+    }
+
+    //console.log(output); // debugging: will remove later
     
     return (
         <div className="up">
@@ -111,21 +153,12 @@ export const Apply = () => {
             </div>
 
             <form id="apply-form">
-                {questions.map((q, index) => {
-                    if (q.type == "text") {
-                        return <TextInput key={index} question={q.question} questionId={q.questionId} variable={q.variable} setVar={q.setVar} index={index} questions={questions} />
-                    }
-                    else if (q.type == "mc") {
-                        return <MultipleChoice key={index} question={q.question} choices={q.choices} questionId={q.questionId} variable={q.variable} setVar={q.setVar} index={index} questions={questions} />
-                    }
-                    else if (q.type == "dropdown") {
-                        return <Dropdown key={index} question={q.question} choices={q.choices} questionId={q.questionId} variable={q.variable} setVar={q.setVar} index={index} questions={questions} />
-                    }
-                })}
+                {questions.map((q, index) => questionRender(q, index))}
+                {/* questionRender(questions[questionIndex], questionIndex) */}
 
-                <ReviewQuestions // Review page here temporarily until further decided where to put it.
-                                 // TODO: Aashna please add css to make it look nice TT
-                    questions={questions} answers={output}></ReviewQuestions>
+                {/*// Review page here temporarily until further decided where to put it.
+                // TODO: Aashna please add css to make it look nice TT
+                 <ReviewQuestions questions={questions} answers={output}></ReviewQuestions>  */}
 
             </form>
         </div>
