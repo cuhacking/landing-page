@@ -1,7 +1,6 @@
 import "./Apply.css";
 import { TextInput, MultipleChoice, Dropdown, ReviewQuestions } from "./QuestionComponents"
 import { useState, useEffect } from "react";
-import {useScrollDirection} from "./s"
 
 export interface Question {
     type: string,
@@ -114,7 +113,6 @@ export const Apply = () => {
     }
 
     window.addEventListener('wheel', (event) => {
-        console.log(event.deltaY)
         if (event.deltaY < 0){
             setScrollDiretion("up");
         } else if (event.deltaY > 0 ){
@@ -122,13 +120,15 @@ export const Apply = () => {
         }
     });
 
-    window.addEventListener('scrollend', (event) => {
+    
         if (scrollDiretion == "up" && questionIndex > 0){
             setQuestionIndex(questionIndex - 1);
+            setScrollDiretion("");
         } else if (scrollDiretion == "down" && questionIndex < (questions.length -1)) {
             setQuestionIndex(questionIndex + 1);
+            setScrollDiretion("");
         }
-    });
+    
 
     // window.addEventListener('scrollend', (event) => {
     //     console.log("fired");
@@ -161,8 +161,8 @@ export const Apply = () => {
             </div>
 
             <form id="apply-form">
-                {questions.map((q, index) => questionRender(q, index))}
-                {/* questionRender(questions[questionIndex], questionIndex) */}
+                {/*questions.map((q, index) => questionRender(q, index))*/}
+                { questionRender(questions[questionIndex], questionIndex) }
 
                 {/*// Review page here temporarily until further decided where to put it.
                 // TODO: Aashna please add css to make it look nice TT
