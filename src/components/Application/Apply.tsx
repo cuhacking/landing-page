@@ -1,5 +1,5 @@
 import "./Apply.css";
-import { TextInput, MultipleChoice, Dropdown, ReviewQuestions, TitlePage } from "./QuestionComponents"
+import { TextInput, MultipleChoice, Dropdown, ReviewQuestions, TitlePage, ProgressBar } from "./QuestionComponents"
 import { useState, useEffect } from "react";
 
 export interface Question {
@@ -15,6 +15,7 @@ export interface Question {
 export interface FormOutput {
     firstName: string,
     lastName: string,
+    email: string,
     school: string,
     year: string
 }
@@ -22,7 +23,7 @@ export interface FormOutput {
 export const Apply = () => {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
-    const [year2, setYear2] = useState("");
+    const [email, setEmail] = useState("");
     const [school, setSchool] = useState("");
     const [year, setYear] = useState("");
     const [dummy, setDummy] = useState(""); // for the pages with no content (i.e. title page, submit page)
@@ -55,26 +56,19 @@ export const Apply = () => {
             type: "text",
             question: "Last Name: ",
             questionId: "lastName",
-            required: true,
+            required: false,
             variable: lname,
             setVar: setLname,
             choices: []
         },
         {
-            type: "dropdown",
-            question: "What year are you in?",
-            choices: [
-                "Select a choice...",
-                "First year",
-                "Second year",
-                "Third year",
-                "Fourth year",
-                "Other"
-            ],
-            required: false,
-            variable: year2,
-            setVar: setYear2,
-            questionId: "year2"
+            type: "text",
+            question: "Email: ",
+            choices: [],
+            required: true,
+            variable: email,
+            setVar: setEmail,
+            questionId: "email"
         },
         {
             type: "mc",
@@ -160,6 +154,8 @@ export const Apply = () => {
     useEffect(() => {
         // window.scrollTo(0, 0);
         document.getElementById("question0")?.scrollIntoView();
+        document.getElementById("prog0")?.classList.add("stop");
+
         // document.getElementById(questions[0].questionId)?.focus();
 
         // window.addEventListener('wheel', debounce(handleWheelEvent));
@@ -171,6 +167,7 @@ export const Apply = () => {
     const output: FormOutput = {
         firstName: fname,
         lastName: lname,
+        email: email,
         school: school,
         year: year
     };
@@ -218,7 +215,7 @@ export const Apply = () => {
         }
     }
 
-    //console.log(output); // debugging: will remove later
+    // console.log(output); // debugging: will remove later
     
     return (
         <div className="up">
@@ -226,6 +223,8 @@ export const Apply = () => {
                 <div id="apply-background_blue-gradient"></div>
                 <div id="apply-background_pink-gradient"></div>
             </div>
+
+            <ProgressBar numQuestions={questions.length}></ProgressBar>
 
             <form id="apply-form">
                 { questions.map((q, index) => questionRender(q, index)) }

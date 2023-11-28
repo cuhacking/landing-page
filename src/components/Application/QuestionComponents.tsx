@@ -19,6 +19,11 @@ const checkRequired = (question: Question, value?: string) => {
 	return true;
 };
 
+const checkEmail = (email: string) => {
+	let regexMatch = /\S+@\S+/;  // Just checks if there is an '@' in between non-space characters
+	return email.search(regexMatch) != -1;
+};
+
 const toggleVisibility = (isVisible: boolean, elementId: string) => {
 	let element = document.getElementById(elementId);
 
@@ -37,6 +42,12 @@ const hideErrorMessage = (id: number) => {
 
 }
 
+const updateProgressBar = (index: number, forwards=true, max=0) => {
+	document.getElementById(`prog${index}`)?.classList.add("stop");
+	if (index>0 && forwards) document.getElementById(`prog${index-1}`)?.classList.remove("stop");
+	else if (index<max && !forwards) document.getElementById(`prog${index+1}`)?.classList.remove("stop");
+}
+
 const goToNextQuestion = (questions: Question[], anchor: string) => {
 	let id = questions[inputNumber].questionId;
 	if (questions[inputNumber].type == "mc") {
@@ -48,29 +59,37 @@ const goToNextQuestion = (questions: Question[], anchor: string) => {
 	// document.getElementById(anchor.slice(1))?.scrollIntoView();
 
 	document.getElementById(id)?.focus({ preventScroll: true });
-	
+
 }
 
 const getAnchor = (index: number) => {
 	return `#question${index}`;
 }
 
-const handleReviewEdit = (index: number) => {
+const handleReviewEdit = (index: number, questions: Question[]) => {
 	document.getElementById("review-page")!.style.display = "none";
 	document.getElementById("apply-form")!.style.display = "grid";
 	inputNumber = index;
+	goToNextQuestion(questions, getAnchor(inputNumber));
+	updateProgressBar(inputNumber);
 };
 
-const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>, questions: Question[]) => {
+export const handleEnterKey = (e: React.KeyboardEvent<HTMLElement>, questions: Question[]) => {
 	if (e.key == "Enter") {
 		if (!checkRequired(questions[inputNumber])){
 			showErrorMessage("Oops! This field is required.", inputNumber);
 			return;
 		}
 
+		if (questions[inputNumber].questionId == "email" && !checkEmail(questions[inputNumber].variable)){
+			showErrorMessage("Please enter a valid email address.", inputNumber);
+			return;
+		}
+
 		if (inputNumber < questions.length - 1) {
 			inputNumber++;
 			goToNextQuestion(questions, getAnchor(inputNumber));
+			updateProgressBar(inputNumber);
 		} 
 		else {
 			document.getElementById("review-page")!.style.display = "block";
@@ -85,14 +104,17 @@ const handleNextButton = (questions: Question[]) => {
 		return;
 	}
 
+	if (questions[inputNumber].questionId == "email" && !checkEmail(questions[inputNumber].variable)){
+		showErrorMessage("Please enter a valid email address.", inputNumber);
+		return;
+	}
+
 	if (inputNumber < questions.length - 1) {
 		inputNumber++;
 		goToNextQuestion(questions, getAnchor(inputNumber));
+		updateProgressBar(inputNumber);
 	} 
 	else {
-		// toggleVisibility(true, "review-page");
-		// toggleVisibility(false, "apply-form");
-
 		document.getElementById("review-page")!.style.display = "block";
 		document.getElementById("apply-form")!.style.display = "none";
 	}
@@ -102,6 +124,7 @@ const handleBackButton = (questions: Question[]) => {
   if (inputNumber > 0) {
   	inputNumber--;
 	goToNextQuestion(questions, getAnchor(inputNumber));
+	updateProgressBar(inputNumber, false, questions.length-1);
   }
 };
 
@@ -189,7 +212,9 @@ export const TextInput = (props: {
 				onClick={() => { handleInputNumber(props.index);}}
         		value={props.variable} 
         		onChange={(e) => {props.setVar(e.target.value); 
-					if (checkRequired(props.questions[props.index], e.target.value)) hideErrorMessage(props.index);
+					if (checkRequired(props.questions[props.index], e.target.value) && 
+						(props.questionId != "email" || checkEmail(e.target.value))) 
+							hideErrorMessage(props.index);
 				}}
 			></input>
 		</QuestionCard>
@@ -281,7 +306,7 @@ export const ReviewQuestions = (props: {
 			return (
 				<div key={index}>
 					<p>{q.question} {getProperty(props.answers, q.questionId as keyof FormOutput)}</p>
-					<p><a onClick={() => handleReviewEdit(index)} href={getAnchor(index)} >edit</a></p> 
+					<Button onClick={() => handleReviewEdit(index, props.questions)} >edit</Button> 
 					<br></br>
 				</div>
 			)
@@ -293,4 +318,22 @@ export const ReviewQuestions = (props: {
 		</div>
     </div>
   )
+}
+
+const renderProgressPoints = (numQuestions: number) => {
+	return Array.from({ length: numQuestions }, (_, i) => i);
+}
+
+export const ProgressBar = ( props: {
+	numQuestions: number;
+}) => {
+	return (
+		<div className="apply-progress-div">
+			<ul className="apply-progress-bar">
+				{renderProgressPoints(props.numQuestions).map((_, index) => (
+					<li key={index} className="apply-progress-element" id={`prog${index}`}></li>
+				))}
+			</ul>
+		</div>
+	)
 }

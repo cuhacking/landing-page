@@ -32,7 +32,7 @@ body {
 	animation-timing-function: ease-in-out; */
 }
 
-.slideup {
+/* .slideup {
 	animation-name: slideup;
 }
 
@@ -56,7 +56,7 @@ body {
 	100% {
 	  bottom: 0px;
 	}
-}
+} */
 
 .apply-question-card div:first-child {
 	width: 100%;
@@ -182,4 +182,53 @@ body {
 	max-width: 800px;
 	margin: auto;
 	padding: 1.5em 0em 0em 0em;
+}
+
+.apply-progress-bar {
+    height: 100%;
+    list-style: none;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    &::after {
+        content: "";
+        position: absolute;
+        top:0;
+        left:5px;
+        background: var(--dark-blue);
+        width: 5px;
+        height: 100vh;
+    }
+}
+
+.apply-progress-element {
+	background: var(--pink);
+	border-radius: 100px;
+	width: 15px;
+	height: 15px;
+	z-index: 1;
+	position: relative;
+	&.stop ~ li {
+		background: var(--dark-blue);
+		&::after {
+			height: 0;
+		}
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 5px;
+		background: var(--pink);
+		width: 5px;
+		height: 100vh;
+	}
+}
+
+.apply-progress-div {
+	position: fixed;
+	height: 80%;
 }
