@@ -2,7 +2,7 @@ import { useStyletron } from "baseui";
 import { SignUpButton } from "./SignUpButton";
 import { CampusSkyline, Clouds } from "./icons/CampusSkyline";
 import { Wordmark } from "./icons/Wordmark";
-import { Row, Column, Subheading, Subheading2 } from "./util";
+import { Row, Column, Subheading2 } from "./util";
 
 export const SkyBackground = () => {
     const [css, _$theme] = useStyletron();
