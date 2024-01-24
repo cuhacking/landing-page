@@ -46,7 +46,6 @@ export const SkyBackground = () => {
                         >
 
                             <Wordmark width="400px" />
-                            <Subheading>March 1st-3rd 2024</Subheading>
                             <Subheading2>Carleton's Official Hackathon</Subheading2>
                             <SignUpButton
                                 onClick={
