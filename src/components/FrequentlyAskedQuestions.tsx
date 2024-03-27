@@ -1,6 +1,4 @@
 import { QuestionAccordion } from "./QuestionAccordion";
-import { Section } from "./Section";
-import { Column } from "./util";
 
 // Define the Question interface
 interface Question {
@@ -34,12 +32,8 @@ const questions: Question[] = [
 
 export const FrequentlyAskedQuestions = () => {
     return (
-        <Section title="Frequently Asked Questions">
-            <Column $style={{ marginTop: "34px", gap: "34px" }}>
-                {questions.map((q, index) => (
-                    <QuestionAccordion key={index} question={q.question} answer={q.answer} />
-                ))}
-            </Column>
-        </Section>
+        <div>
+            Get rdy to rumble pt2
+        </div>
     );
 };
