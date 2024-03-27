@@ -1,0 +1,234 @@
+#apply-background {
+	background: var(--light-blue);
+	position: fixed;
+	z-index: -1000;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	overflow-y: hidden;
+}
+
+#apply-form {
+	color: var(--dark-blue);
+	display: grid;
+	grid-template: 1fr / 1fr;
+	margin: auto;
+	width: 70%;
+	max-width: 800px;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.apply-question-card {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	/* animation-duration: 0.8s;
+	animation-timing-function: ease-in-out; */
+}
+
+/* .slideup {
+	animation-name: slideup;
+}
+
+.slidedown {
+	animation-name: slidedown;
+}
+
+@keyframes slidedown {
+	0% {
+	  top: -700px;
+	}
+	100% {
+	  top: 0px;
+	}
+}
+
+@keyframes slideup {
+	0% {
+	  bottom: -700px;
+	}
+	100% {
+	  bottom: 0px;
+	}
+} */
+
+.apply-question-card div:first-child {
+	width: 100%;
+}
+
+.apply-question {
+	display: block;
+	margin-bottom: 1em;
+	font-weight: 600;
+	font-size: 1.4em;
+}
+
+.apply-text-input {
+	all: unset;
+	margin-bottom: 1em;
+	border-bottom: 3px solid var(--dark-blue);
+	width: 100%;
+	font-size: 1.5em;
+	
+}
+
+.apply-radio {
+	background: var(--med-blue);
+	display: flex;
+	align-items: center;
+	margin: 0.55em auto;
+	padding: 5px 10px;
+	border-radius: 4px;
+}
+
+.apply-radio:hover, .apply-radio *:hover {
+	cursor: pointer;
+	filter: brightness(110%);
+}
+
+.apply-radio input[type="radio"] {
+	border: 2px solid var(--light-blue);
+	appearance: none;
+	width: 1.4em;
+	height: 1.4em;
+	border-radius: 3px;
+}
+
+.apply-radio input[type="radio"]:checked {
+	background-color: var(--light-blue);
+}
+
+.apply-radio input[type="radio"]:focus-visible {
+	outline: unset;
+	border: 2px solid var(--pink);
+}
+
+.apply-radio label {
+	font-size: 1.4em;
+	width: 100%;
+	margin: 0 auto;
+	padding: 5px 10px;
+	border-radius: 4px;
+}
+
+.apply-dropdown {
+	color: var(--dark-blue);
+	background: var(--med-blue);
+	display: block;
+	margin: 0.55em auto;
+	padding: 10px 10px;
+	width: 100%;
+	font-size: 1.4em;
+	border: unset;
+	border-radius: 0.3em;
+}
+
+.apply-dropdown:focus {
+	outline: 2px solid var(--pink);
+}
+
+.apply-button, .apply-register-button {
+	color: var(--white-blue);
+	background-color: var(--pink);
+	float: right;
+	margin: 0 0.4em 0 0.1em;
+	padding: 0.18em 0.6em;
+	text-align: center;
+	line-height: 0.5;
+	font-weight: 650;
+	font-size: 1.8em;
+	border-radius: 0.2em;
+}
+
+.apply-button:hover, .apply-register-button:hover {
+	outline: 2px solid var(--med-blue);
+}
+
+.apply-radio input[type="radio"]:hover,
+.apply-dropdown:hover,
+.apply-button:hover,
+.apply-register-button:hover {
+	cursor: pointer;
+	filter: brightness(110%);
+}
+
+.apply-title {
+	font-size: 2.9em;
+	font-weight: 550;
+}
+
+.apply-subheader {
+	font-size: 1.8em;
+}
+
+.apply-register-button {
+	padding: 0.65em;
+	max-width: 230px;
+	float: none;
+	font-weight: 550;
+	border-radius: 0.3em;
+	margin:auto;
+	margin-top: 1.6em;
+}
+
+#review-page {
+	width: 70%;
+	max-width: 800px;
+	margin: auto;
+	padding: 1.5em 0em 0em 0em;
+}
+
+.apply-progress-bar {
+    height: 100%;
+    list-style: none;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    &::after {
+        content: "";
+        position: absolute;
+        top:0;
+        left:5px;
+        background: var(--dark-blue);
+        width: 5px;
+        height: 100vh;
+    }
+}
+
+.apply-progress-element {
+	background: var(--pink);
+	border-radius: 100px;
+	width: 15px;
+	height: 15px;
+	z-index: 1;
+	position: relative;
+	&.stop ~ li {
+		background: var(--dark-blue);
+		&::after {
+			height: 0;
+		}
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 5px;
+		background: var(--pink);
+		width: 5px;
+		height: 100vh;
+	}
+}
+
+.apply-progress-div {
+	position: fixed;
+	height: 80%;
+}
