@@ -1,11 +1,13 @@
 import "minireset.css";
 import "./App.css";
+import {Hero} from './components/Hero';
 import { FrequentlyAskedQuestions } from "./components/FrequentlyAskedQuestions";
 
 export const App = () => {
   return (
     <div>
-      Get rdy to rumble
+      <Hero />
+      <h1>more</h1>
     </div>
   );
 };
