@@ -13,11 +13,13 @@ export const Hero = () => {
 		<div>
 			<Parallax pages={3}>
 				<ParallaxLayer offset={0} speed={0.75}>
-					<img className="mountain-small" src={mountainSmall} alt="mountain" />
+                    
+					<img className="mountain-small" src={mountainSmall} alt="mountain" /><div className="sunrise-gradient"></div>
 				</ParallaxLayer>
 
 				<ParallaxLayer offset={0} speed={1}>
-					<img className="mountain-big" src={mountainBig} alt="mountain-big" />
+                    
+					<img className="mountain-big" src={mountainBig} alt="mountain-big" /><div className="sunrise-gradient"></div>
 				</ParallaxLayer>
 
 				<ParallaxLayer offset={0.9} speed={2}>

@@ -21,3 +21,11 @@
 .snow {
     scale: 3;
 }
+
+.sunrise-gradient {
+    width: 100%;
+    height: 80%;
+    opacity: 0.5;
+    position: absolute;
+    background-image: linear-gradient(#7DBDF1, #C5DFF8, #F4C8D3);
+}
