@@ -4,12 +4,14 @@ import { Hero } from "./components/Hero";
 import { FrequentlyAskedQuestions } from "./components/FrequentlyAskedQuestions";
 import { NavBar } from "./components/NavBar";
 import { useStyletron } from "baseui";
+import ReactConfetti from "react-confetti";
+import { ConfettiProvider } from "./components/Confetti";
 
 export const App = () => {
   const [css, $theme] = useStyletron();
 
   return (
-    <>
+    <ConfettiProvider>
       <NavBar></NavBar>
       <div
         className={css({
@@ -24,7 +26,7 @@ export const App = () => {
       >
         <Hero />
       </div>
-    </>
+    </ConfettiProvider>
   );
 };
 
