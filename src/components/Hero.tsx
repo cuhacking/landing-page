@@ -10,23 +10,57 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { ImageCarousel } from "./ImageCarousel";
 import { useStyletron } from "baseui";
 import { Heading, Paragraph } from "./Typography";
+import { EmailSignup } from "./EmailSignup";
 
 export const Hero = () => {
   const [css, $theme] = useStyletron();
 
   return (
     <Parallax pages={3}>
-      <ParallaxLayer offset={0} speed={0.75}>
+      <ParallaxLayer
+        offset={0}
+        speed={0.75}
+        style={{
+          pointerEvents: "none",
+        }}
+      >
         <img className="mountain-small" src={mountainSmall} alt="mountain" />
         <div className="sunrise-gradient"></div>
       </ParallaxLayer>
 
-      <ParallaxLayer offset={0} speed={1}>
+      <ParallaxLayer
+        offset={0}
+        speed={1}
+        style={{
+          pointerEvents: "none",
+        }}
+      >
         <img className="mountain-big" src={mountainBig} alt="mountain-big" />
         <div className="sunrise-gradient"></div>
       </ParallaxLayer>
 
-      <ParallaxLayer offset={0.9} speed={2}>
+      <ParallaxLayer offset={0.06} speed={4}>
+        <div
+          className={css({
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+          })}
+        >
+          <EmailSignup />
+        </div>
+      </ParallaxLayer>
+
+      <ParallaxLayer
+        offset={0.9}
+        speed={2}
+        style={{
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      >
         <div>
           <img className="land snow" src={snow} alt="snow" />
           <img className="land carleton" src={carleton} alt="carleton" />
