@@ -54,7 +54,7 @@ export const NavBar = () => {
         <a href="" className={css(linkStyle)}>
           Sponsors
         </a>
-        <a href="##about" className={css(linkStyle)}>
+        <a href="#about" className={css(linkStyle)}>
           About
         </a>
       </div>

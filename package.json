@@ -21,6 +21,7 @@
     "react-fast-marquee": "^1.6.4",
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.22.3",
+    "react-spring-scroll-to-hook": "^1.0.3",
     "sass": "^1.72.0",
     "styletron-engine-atomic": "^1.5.0",
     "styletron-react": "^6.1.0"

@@ -264,7 +264,7 @@
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.7.3.tgz#ea78fd447cbc2612c1f5d55852e3c331e8172a0b"
   integrity sha512-Kpx/fQ/ZFX31OtlqVEFfgaD1ACzul4NksrvIgYfIFq9JpDHFwQkMVZ10tbo0FU/grje4rcL4EIrjekl3kYwgWw==
 
-"@react-spring/web@~9.7.3":
+"@react-spring/web@^9.1.2", "@react-spring/web@~9.7.3":
   version "9.7.3"
   resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.7.3.tgz#d9f4e17fec259f1d65495a19502ada4f5b57fa3d"
   integrity sha512-BXt6BpS9aJL/QdVqEIX9YoUy8CE6TJrU0mNCqSoxdXlIeNcEBWOfIyE6B14ENNsyQKS3wOWkiJfco0tCr/9tUg==
@@ -2748,6 +2748,13 @@ react-router@6.22.3:
   integrity sha512-dr2eb3Mj5zK2YISHK++foM9w4eBnO23eKnZEDs7c880P6oKbrjz/Svg9+nxqtHQK+oMW4OtjZca0RqPglXxguQ==
   dependencies:
     "@remix-run/router" "1.15.3"
+
+react-spring-scroll-to-hook@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-spring-scroll-to-hook/-/react-spring-scroll-to-hook-1.0.3.tgz#1280436e11ce182b0460905a3288dceb1a4e4e05"
+  integrity sha512-IZRXxqeTbN/yHPSf5bF5AKhznqvRkJ3B5lzON1zxaeONFUdcftC/zXB9jXIDxZIz6AV4wl4h9I+mPGMkKZcXwQ==
+  dependencies:
+    "@react-spring/web" "^9.1.2"
 
 react-uid@^2.3.0:
   version "2.3.3"

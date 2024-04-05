@@ -16,6 +16,7 @@ export const Heading = (props: {
         lineHeight: "94px",
         color: "#2A2547",
         letterSpacing: "0.05em",
+        marginBottom: "49px",
         ...props.$style,
       })}
     >
