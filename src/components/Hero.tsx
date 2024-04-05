@@ -10,7 +10,8 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { ImageCarousel } from "./ImageCarousel";
 import { useStyletron } from "baseui";
 import { Heading, Paragraph } from "./Typography";
-import { EmailSignup } from "./EmailSignup";
+import { EmailSignup, SponsorEmailSignup } from "./EmailSignup";
+import { PastSponsors } from "../cuhacking-past-sponsors/PastSponsors";
 
 export const Hero = () => {
   const [css, $theme] = useStyletron();
@@ -67,7 +68,15 @@ export const Hero = () => {
         </div>
       </ParallaxLayer>
 
-      <ParallaxLayer offset={0.98} speed={2}>
+      <ParallaxLayer
+        offset={0.99}
+        speed={2}
+        id="about"
+        style={{
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      >
         <div
           className={css({
             display: "flex",
@@ -76,7 +85,6 @@ export const Hero = () => {
             justifyContent: "center",
             overflow: "hidden",
           })}
-          id="#about"
         >
           <Heading>❆⋆ What is cuHacking? ⋆❆</Heading>
           <ImageCarousel />
@@ -99,6 +107,24 @@ export const Hero = () => {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est.
           </Paragraph>
+        </div>
+      </ParallaxLayer>
+
+      <ParallaxLayer offset={1} speed={2}>
+        <div
+          className={css({
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+            paddingLeft: "8%",
+            paddingRight: "8%",
+          })}
+        >
+          <Heading>❆⋆ Past Sponsors ⋆❆</Heading>
+          <PastSponsors />
+          <SponsorEmailSignup />
         </div>
       </ParallaxLayer>
     </Parallax>
