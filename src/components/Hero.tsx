@@ -12,6 +12,7 @@ import { useStyletron } from "baseui";
 import { Heading, Paragraph } from "./Typography";
 import { EmailSignup, SponsorEmailSignup } from "./EmailSignup";
 import { PastSponsors } from "../cuhacking-past-sponsors/PastSponsors";
+import { MeetTheTeam } from "./MeetTheTeam";
 
 export const Hero = () => {
   const [css, $theme] = useStyletron();
@@ -126,6 +127,10 @@ export const Hero = () => {
           <PastSponsors />
           <SponsorEmailSignup />
         </div>
+      </ParallaxLayer>
+
+      <ParallaxLayer offset={2} speed={2}>
+        <MeetTheTeam />
       </ParallaxLayer>
     </Parallax>
   );

@@ -2,11 +2,11 @@ import { createContext, useContext, useRef, useState } from "react";
 import ReactConfetti from "react-confetti";
 
 interface ConfettiContextType {
-  activate: () => void;
+  activateConfetti: () => void;
 }
 
 const ConfettiContext = createContext<ConfettiContextType>({
-  activate: () => {},
+  activateConfetti: () => {},
 });
 
 export const useConfetti = () => {
@@ -26,7 +26,7 @@ export const ConfettiProvider = (props: { children: React.ReactNode }) => {
   };
 
   return (
-    <ConfettiContext.Provider value={{ activate }}>
+    <ConfettiContext.Provider value={{ activateConfetti: activate }}>
       {isRunning && (
         <ReactConfetti
           key={confettiKey.current}

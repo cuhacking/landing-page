@@ -79,7 +79,7 @@ export const EmailSubscriptionForm = () => {
   const [css, $theme] = useStyletron();
   const [value, setValue] = React.useState("");
   const [prevSubmissions, setPrevSubmissions] = React.useState([] as string[]);
-  const { activate } = useConfetti();
+  const { activateConfetti } = useConfetti();
 
   const submitEmail = () => {
     const payload = {
@@ -99,8 +99,10 @@ export const EmailSubscriptionForm = () => {
     });
 
     setPrevSubmissions([...prevSubmissions, value]);
-    activate();
+    activateConfetti();
   };
+
+  const previouslySubscribed = prevSubmissions.includes(value);
 
   return (
     <div
@@ -136,6 +138,7 @@ export const EmailSubscriptionForm = () => {
         onClick={() => {
           submitEmail();
         }}
+        disabled={previouslySubscribed}
         overrides={{
           Root: {
             style: {
@@ -147,7 +150,7 @@ export const EmailSubscriptionForm = () => {
           },
         }}
       >
-        Subscribe
+        Subscribe{previouslySubscribed ? "d" : ""}
       </Button>
     </div>
   );
@@ -222,7 +225,7 @@ export const SponsorEmailSubscriptionForm = () => {
   const [css, $theme] = useStyletron();
   const [value, setValue] = React.useState("");
   const [prevSubmissions, setPrevSubmissions] = React.useState([] as string[]);
-  const { activate } = useConfetti();
+  const { activateConfetti } = useConfetti();
 
   const submitEmail = () => {
     const payload = {
@@ -242,7 +245,7 @@ export const SponsorEmailSubscriptionForm = () => {
     });
 
     setPrevSubmissions([...prevSubmissions, value]);
-    activate();
+    activateConfetti();
   };
 
   return (

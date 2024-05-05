@@ -11,22 +11,24 @@ export const App = () => {
   const [css, $theme] = useStyletron();
 
   return (
-    <ConfettiProvider>
-      <NavBar></NavBar>
-      <div
-        className={css({
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-          width: "100vw",
-          overflow: "hidden",
-        })}
-      >
-        <Hero />
-      </div>
-    </ConfettiProvider>
+    <>
+      <ConfettiProvider>
+        <NavBar></NavBar>
+        <div
+          className={css({
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            width: "100vw",
+            overflow: "hidden",
+          })}
+        >
+          <Hero />
+        </div>
+      </ConfettiProvider>
+    </>
   );
 };
 
