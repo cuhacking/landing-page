@@ -17,42 +17,43 @@ export const Hero = () => {
   const [css, $theme] = useStyletron();
 
   return (
-    <Parallax pages={3}>
-      <ParallaxLayer
-        offset={0}
-        speed={0.75}
-        style={{
-          pointerEvents: "none",
-        }}
-      >
-        <img className="mountain-small" src={mountainSmall} alt="mountain" />
-        <div className="sunrise-gradient"></div>
-      </ParallaxLayer>
+    <>
+    {/* // <Parallax pages={3}>
+    //   <ParallaxLayer
+    //     offset={0}
+    //     speed={0.75}
+    //     style={{
+    //       pointerEvents: "none",
+    //     }}
+    //   >
+    //     <img className="mountain-small" src={mountainSmall} alt="mountain" />
+    //     <div className="sunrise-gradient"></div>
+    //   </ParallaxLayer>
 
-      <ParallaxLayer
-        offset={0}
-        speed={1}
-        style={{
-          pointerEvents: "none",
-        }}
-      >
-        <img className="mountain-big" src={mountainBig} alt="mountain-big" />
-        <div className="sunrise-gradient"></div>
-      </ParallaxLayer>
+    //   <ParallaxLayer
+    //     offset={0}
+    //     speed={1}
+    //     style={{
+    //       pointerEvents: "none",
+    //     }}
+    //   >
+    //     <img className="mountain-big" src={mountainBig} alt="mountain-big" />
+    //     <div className="sunrise-gradient"></div>
+    //   </ParallaxLayer>
 
-      <ParallaxLayer offset={0.06} speed={4}>
+    //   <ParallaxLayer offset={0.06} speed={4}> */}
         <div
-          className={css({
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-          })}
+          // className={css({
+          //   display: "flex",
+          //   flexDirection: "column",
+          //   alignItems: "center",
+          //   justifyContent: "center",
+          //   overflow: "hidden",
+          // })}
         >
           <EmailSignup />
         </div>
-      </ParallaxLayer>
+      {/* </ParallaxLayer>
 
       <ParallaxLayer
         offset={0.9}
@@ -76,17 +77,17 @@ export const Hero = () => {
           pointerEvents: "none",
           userSelect: "none",
         }}
-      >
+      > */}
         <div
-          className={css({
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-          })}
+          // className={css({
+          //   display: "flex",
+          //   flexDirection: "column",
+          //   alignItems: "center",
+          //   justifyContent: "center",
+          //   overflow: "hidden",
+          // })}
         >
-          <Heading>❆⋆ What is cuHacking? ⋆❆</Heading>
+          <Heading>What is cuHacking?</Heading>
           <ImageCarousel />
           <Paragraph
             $style={{
@@ -108,25 +109,26 @@ export const Hero = () => {
             culpa qui officia deserunt mollit anim id est.
           </Paragraph>
         </div>
-      </ParallaxLayer>
+      {/* </ParallaxLayer>
 
-      <ParallaxLayer offset={1} speed={2}>
+      <ParallaxLayer offset={1} speed={2}> */}
         <div
-          className={css({
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-            paddingLeft: "8%",
-            paddingRight: "8%",
-          })}
+          // className={css({
+          //   display: "flex",
+          //   flexDirection: "column",
+          //   alignItems: "center",
+          //   justifyContent: "center",
+          //   overflow: "hidden",
+          //   paddingLeft: "8%",
+          //   paddingRight: "8%",
+          // })}
         >
           <Heading>❆⋆ Past Sponsors ⋆❆</Heading>
           <PastSponsors />
           <SponsorEmailSignup />
         </div>
-      </ParallaxLayer>
-    </Parallax>
+      {/* </ParallaxLayer>
+    </Parallax> */}
+    </>
   );
 };
