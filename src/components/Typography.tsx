@@ -3,24 +3,13 @@ import { StyleObject } from "styletron-react";
 
 export const Heading = (props: {
   children: React.ReactNode;
-  $style?: StyleObject;
+  className?: string;
 }) => {
-  const [css, $theme] = useStyletron();
   return (
-    <a
-      className={css({
-        fontFamily: "Lexend Deca",
-        fontStyle: "normal",
-        fontWeight: 500,
-        fontSize: "75px",
-        lineHeight: "94px",
-        color: "#2A2547",
-        letterSpacing: "0.05em",
-        marginBottom: "49px",
-        ...props.$style,
-      })}
-    >
-      {props.children}
+    <a className={"flex text-4xl " + props.className}>
+      <h1>❆</h1>
+      <h1 className="text-4xl text-center">{props.children}</h1>
+      <h1>❆</h1>
     </a>
   );
 };

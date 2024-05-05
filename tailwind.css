@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow-x: hidden;
+}
+
+* {
+    font-family: "Poppins";
+}
+
+h2 {
+    font-family: "Lexend Deca";
+}

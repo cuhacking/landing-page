@@ -33,7 +33,10 @@ const questions: Question[] = [
 export const FrequentlyAskedQuestions = () => {
     return (
         <div>
-            Get rdy to rumble pt2
+            <QuestionAccordion 
+                questions={questions.map(value => value.question)}
+                answers={questions.map(value => value.answer)}
+            ></QuestionAccordion>
         </div>
     );
 };
