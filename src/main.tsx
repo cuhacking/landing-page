@@ -1,5 +1,6 @@
 import React from "react";
 import "../tailwind.css";
+import "./main.scss";
 import ReactDOM from "react-dom/client";
 import HomePage from "./pages/homePage/HomePage.tsx";
 import { BaseProvider } from "baseui";

@@ -21,8 +21,11 @@ export const Hero = () => {
 				<div className="background-gradient opacity-25"></div>
 				<img className="image mountain-big" src={mountainBig} alt="Mountain" />
 				<div className="background-gradient opacity-50"></div>
-				<img className="image snow" src={snow} alt="Snow"/>
-				<img className="image carleton" src={carleton} alt="Carleton University campus" />
+				<div className="carleton-foreground">
+					<img className="image snow" src={snow} alt="Snow"/>
+					<img className="image carleton" src={carleton} alt="Carleton University campus" />
+				</div>	
+				
 				
 			</div>
 			<div className="hero__content">
