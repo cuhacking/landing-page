@@ -1,32 +1,41 @@
 import { useStyletron } from "baseui";
 import { StyleObject } from "styletron-react";
 
-export const Heading = (props: { children: React.ReactNode; $style?: StyleObject }) => {
-	const [css, $theme] = useStyletron();
-	return (
-		<a className="flex text-6xl font-bold font-display" href="heading">
-			<h1>❆* </h1>
-			<h1>{props.children}</h1>
-			<h2>*❆</h2>
-		</a>
-	);
+export enum Typo {
+	TITLE,
+	TITLE_2,
+	TITLE_3,
+	SUBTITLE,
+	PARAGRAPH,
+}
+
+export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?: string }> = (
+	props
+) => {
+	switch (props.typo) {
+		case Typo.TITLE:
+			return <h1 className={"text-9xl font-bold font-display " + props.className}>{props.children}</h1>;
+		case Typo.TITLE_2:
+			return <h2 className={"text-6xl font-display " + props.className}>{props.children}</h2>;
+		case Typo.TITLE_3:
+			return <h2 className={"text-4xl font-bold font-body text-secondary " + props.className}>{props.children}</h2>;
+		case Typo.SUBTITLE:
+			return <h5 className={"font-body " + props.className}>{props.children}</h5>;
+		case Typo.PARAGRAPH:
+			return <p className={"font-body " + props.className}>{props.children}</p>;
+		default:
+			return <div className={props.className}>{props.children}</div>;
+	}
 };
 
-export const Paragraph = (props: { children: React.ReactNode; $style?: StyleObject }) => {
-	const [css, $theme] = useStyletron();
+export const Heading = (props: { children: React.ReactNode }) => {
 	return (
-		<a
-			className={css({
-				fontFamily: "Poppins",
-				fontStyle: "normal",
-				fontWeight: 500,
-				fontSize: "18px",
-				lineHeight: "27px",
-				letterSpacing: "0.05em",
-				...props.$style,
-			})}
-		>
-			{props.children}
-		</a>
+		<div className="my-14 px-20 ">
+			<a className="flex justify-center items-center" href="heading">
+				<Text typo={Typo.TITLE_2}>❆*</Text>
+				<Text typo={Typo.TITLE_2} className="mx-10 font-bold text-center ">{props.children}</Text>
+				<Text typo={Typo.TITLE_2}>*❆</Text>
+			</a>
+		</div>
 	);
 };

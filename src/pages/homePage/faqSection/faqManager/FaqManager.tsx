@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaqAccordion } from "../FaqAccordion/FaqAccordion";
+import { FaqAccordion } from "../faqAccordion/FaqAccordion";
 import { Faq } from "../types";
 import "./FaqManager.style.scss";
 

@@ -4,8 +4,7 @@ export default {
     './index.html',
     './src/*.{html,js,tsx}',
     './src/components/*.{html,js,tsx}',
-    './src/components/Application/*.{html,js,tsx}',
-    '/src/components/NavBar.tsx',
+    './src/pages/homePage/**/*.{html,js,tsx}',
   ],
   theme: {
     fontFamily: {
@@ -18,11 +17,15 @@ export default {
     themes: [
       {
         light: {
+          
           "primary": "#065f46",
-          "secondary": "#4ade80",
+          "secondary": "#F05FAE",
           "accent": "#f9a8d4",
           "neutral": "#10b981",
-          "base-100": "#f5f5f4",
+          
+          "base-content": "#2A2547",
+          "base-100": "#C5DFF8",
+
           "info": "#22d3ee",
           "success": "#d9f99d",
           "warning": "#fed7aa",
@@ -32,10 +35,10 @@ export default {
       {
         dark: {
           "primary": "#065f46",
-          "secondary": "#4ade80",
+          "secondary": "#F05FAE",
           "accent": "#f9a8d4",
           "neutral": "#10b981",
-          "base-100": "#ff0000",
+          "base-100": "#2A2547",
           "info": "#22d3ee",
           "success": "#d9f99d",
           "warning": "#fed7aa",

@@ -20,6 +20,16 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "src/homepage/faqSection/FaqSection.tsx",
+    "src/homepage/faqSection/FrequentlyAskedQuestions.tsx",
+    "src/homepage/faqSection/faqAccordion/FaqAccordion.tsx",
+    "src/homepage/faqSection/faqManager/FaqManager.tsx",
+    "src/homepage/faqSection/index.ts",
+    "src/homepage/faqSection/types.d.ts",
+    "src/homepage/heroSection/EmailSignup.tsx",
+    "src/homepage/heroSection/Hero.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
