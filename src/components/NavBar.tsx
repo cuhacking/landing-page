@@ -1,4 +1,5 @@
-// Links for the navbar
+import "./NavBar.scss"
+
 // TODO: Add the hrefs for the navbar
 const links = ["About", "FAQ", "Sponsors", "Join Us"];
 
@@ -18,7 +19,7 @@ export const NavBar = (props: { children: React.ReactNode }) => {
 
 const Nav = () => {
   return (
-		<div className="w-full navbar fixed">
+		<div className="w-full navbar fixed z-50">
 			<div className="flex-1">
 				<a href="">
 					<img src="/Logo.svg" className="w-9"></img>
