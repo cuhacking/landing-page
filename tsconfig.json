@@ -22,6 +22,7 @@
   },
   "include": [
     "src",
+    "src/components/FrostedGlass.tsx",
     "src/homepage/faqSection/FaqSection.tsx",
     "src/homepage/faqSection/FrequentlyAskedQuestions.tsx",
     "src/homepage/faqSection/faqAccordion/FaqAccordion.tsx",

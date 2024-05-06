@@ -8,17 +8,30 @@ import snow from "/hero-svgs/snow.svg";
 import { EmailSignup } from "./EmailSignup";
 
 export const Hero = () => {
+
+	const addAnchor = () => {
+		document.getElementById("raven")?.setAttribute('anchor', 'email-signup-anchor');
+		return null;
+	}
 	return (
 		<div className="hero">
-			{/* <div className="hero__background">
-				<img className="image mountain-big" src={mountainBig} alt="Mountain" />
+			<div className="hero__background">
+				
 				<img className="image mountain-small" src={mountainSmall} alt="Mountain" />
-				<img className="image snow" src={snow} alt="Snow" />
+				<div className="background-gradient opacity-25"></div>
+				<img className="image mountain-big" src={mountainBig} alt="Mountain" />
+				<div className="background-gradient opacity-50"></div>
+				<img className="image snow" src={snow} alt="Snow"/>
 				<img className="image carleton" src={carleton} alt="Carleton University campus" />
-				<img className="image raven" src={raven} alt="Raven" />
-			</div> */}
+				
+			</div>
 			<div className="hero__content">
-				<EmailSignup />
+				
+				<EmailSignup id="email-signup-anchor"/>
+				<div id="raven" className=" w-96">
+					<img className="image " src={raven} alt="Raven" />
+				</div>
+				{addAnchor()}
 			</div>
 		</div>
 	);

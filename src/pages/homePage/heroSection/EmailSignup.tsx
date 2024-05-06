@@ -3,9 +3,9 @@ import { useConfetti } from "./Confetti";
 import { FrostedPanel } from "../../../components/FrostedPanel";
 import { Text, Typo } from "../../../components/Typography";
 
-export const EmailSignup = () => {
+export const EmailSignup = (props: {id?:string, className?: string }) => {
 	return (
-		<FrostedPanel>
+		<FrostedPanel className={props.className} id={props.id}>
 				<div className="flex flex-col items-center justify-center">
 					<Text typo={Typo.TITLE_3}>Coming in 2025!</Text>
 					<Text typo={Typo.TITLE}>cuHacking</Text>

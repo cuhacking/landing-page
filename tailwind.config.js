@@ -20,6 +20,7 @@ export default {
           
           "primary": "#065f46",
           "secondary": "#F05FAE",
+          "secondary-content": "#EFF7FF",
           "accent": "#f9a8d4",
           "neutral": "#10b981",
           
@@ -36,6 +37,7 @@ export default {
         dark: {
           "primary": "#065f46",
           "secondary": "#F05FAE",
+          "secondary-content": "#EFF7FF",
           "accent": "#f9a8d4",
           "neutral": "#10b981",
           "base-100": "#2A2547",
