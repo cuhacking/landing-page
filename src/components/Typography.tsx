@@ -16,7 +16,7 @@ export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?
 		case Typo.TITLE:
 			return <h1 className={"lg:text-9xl md:text-8xl sm:text-7xl text-5xl font-bold font-display " + props.className}>{props.children}</h1>;
 		case Typo.TITLE_2:
-			return <h2 className={"md:text-6xl sm:text-4xl text-3xl font-display " + props.className}>{props.children}</h2>;
+			return <h2 className={"md:text-6xl sm:text-5xl text-3xl font-display " + props.className}>{props.children}</h2>;
 		case Typo.TITLE_3:
 			return <h2 className={"md:text-4xl sm:text-2xl text-xl font-bold font-body text-secondary " + props.className}>{props.children}</h2>;
 		case Typo.SUBTITLE:
