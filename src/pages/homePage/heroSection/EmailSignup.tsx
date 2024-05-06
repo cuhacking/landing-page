@@ -3,6 +3,30 @@ import { useConfetti } from "./Confetti";
 import { FrostedPanel } from "../../../components/FrostedPanel";
 import { Text, Typo } from "../../../components/Typography";
 
+export const EmailSignup = () => {
+	return (
+		<FrostedPanel>
+				<div className="flex flex-col items-center justify-center">
+					<Text typo={Typo.TITLE_3}>Coming in 2025!</Text>
+					<Text typo={Typo.TITLE}>cuHacking</Text>
+					<Text typo={Typo.SUBTITLE}>Carleton University's Official Hackathon</Text>
+					<EmailSubscriptionForm />
+				</div>
+		</FrostedPanel>
+	);
+};
+
+export const SponsorEmailSignup = () => {
+	return (
+		<FrostedPanel>
+      <div className="flex flex-col items-center justify-center">
+			<a>Interested in becoming a sponsor?</a>
+			<SponsorEmailSubscriptionForm />
+      </div>
+		</FrostedPanel>
+	);
+};
+
 export const EmailSubscriptionForm = () => {
 	const [value, setValue] = React.useState("");
 	const [prevSubmissions, setPrevSubmissions] = React.useState([] as string[]);
@@ -52,19 +76,6 @@ export const EmailSubscriptionForm = () => {
 	);
 };
 
-export const EmailSignup = () => {
-	return (
-		<FrostedPanel>
-				<div className="flex flex-col items-center justify-center">
-					<Text typo={Typo.TITLE_3}>Coming in 2025!</Text>
-					<Text typo={Typo.TITLE}>cuHacking</Text>
-					<Text typo={Typo.SUBTITLE}>Carleton University's Official Hackathon</Text>
-					<EmailSubscriptionForm />
-				</div>
-		</FrostedPanel>
-	);
-};
-
 export const SponsorEmailSubscriptionForm = () => {
 	const [value, setValue] = React.useState("");
 	const [prevSubmissions, setPrevSubmissions] = React.useState([] as string[]);
@@ -111,16 +122,5 @@ export const SponsorEmailSubscriptionForm = () => {
 				SIGN UP
 			</button>
 		</div>
-	);
-};
-
-export const SponsorEmailSignup = () => {
-	return (
-		<FrostedPanel>
-      <div className="flex flex-col items-center justify-center">
-			<a>Interested in becoming a sponsor?</a>
-			<SponsorEmailSubscriptionForm />
-      </div>
-		</FrostedPanel>
 	);
 };

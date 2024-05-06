@@ -12,14 +12,10 @@ export const App = () => {
   return (
     <>
     <ConfettiProvider>
-      <NavBar>
-      <div>
         <Hero />
         <AboutSection />
         <FaqSection />
         <SponsorsSection />
-      </div>
-      </NavBar>
     </ConfettiProvider>
     </>
   );

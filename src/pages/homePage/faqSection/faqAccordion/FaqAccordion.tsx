@@ -12,7 +12,7 @@ export const FaqAccordion = ({faq, selected, onClick }: FaqAccordionProps) => {
         <div className={`FaqAccordion ${selected ? "FaqAccordion--open" : "FaqAccordion--closed"}`} onClick={onClick}>
             <div className="FaqAccordion__head">
                 {/* // TODO: should be svg */}
-                <div className="FaqAccordion__button">{selected ? "-" : "+"}</div>
+                <button className="FaqAccordion__button">{selected ? "-" : "+"}</button>
                 <div className="FaqAccordion__question">{faq.question}</div>
             </div>
             {selected && (<div className="FaqAccordion__answer">{faq.answer}</div>)}
