@@ -12,13 +12,14 @@ export const App = () => {
   return (
     <>
     <ConfettiProvider>
-      <NavBar></NavBar>
+      <NavBar>
       <div>
         <Hero />
         <AboutSection />
         <FaqSection />
         <SponsorsSection />
       </div>
+      </NavBar>
     </ConfettiProvider>
     </>
   );
