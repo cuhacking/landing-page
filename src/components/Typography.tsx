@@ -14,13 +14,13 @@ export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?
 ) => {
 	switch (props.typo) {
 		case Typo.TITLE:
-			return <h1 className={"text-9xl font-bold font-display " + props.className}>{props.children}</h1>;
+			return <h1 className={"lg:text-9xl md:text-8xl sm:text-7xl text-5xl font-bold font-display " + props.className}>{props.children}</h1>;
 		case Typo.TITLE_2:
-			return <h2 className={"text-6xl font-display " + props.className}>{props.children}</h2>;
+			return <h2 className={"md:text-6xl sm:text-4xl text-3xl font-display " + props.className}>{props.children}</h2>;
 		case Typo.TITLE_3:
-			return <h2 className={"text-4xl font-bold font-body text-secondary " + props.className}>{props.children}</h2>;
+			return <h2 className={"md:text-4xl sm:text-2xl text-xl font-bold font-body text-secondary " + props.className}>{props.children}</h2>;
 		case Typo.SUBTITLE:
-			return <h5 className={"font-body " + props.className}>{props.children}</h5>;
+			return <h5 className={"sm:text-base text-xs font-body " + props.className}>{props.children}</h5>;
 		case Typo.PARAGRAPH:
 			return <p className={"font-body " + props.className}>{props.children}</p>;
 		default:
@@ -30,7 +30,7 @@ export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?
 
 export const Heading = (props: { children: React.ReactNode }) => {
 	return (
-		<div className="my-14 px-20 ">
+		<div className="my-14 mt-32 px-20 ">
 			<a className="flex justify-center items-center" href="heading">
 				<Text typo={Typo.TITLE_2}>❆*</Text>
 				<Text typo={Typo.TITLE_2} className="mx-10 font-bold text-center ">{props.children}</Text>

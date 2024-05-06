@@ -8,11 +8,11 @@ export const PastSponsors = () => {
   const images = PAST_SPONSOR_IMAGES;
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-x-10 gap-y-4 place-items-center">
+    <div className="mx-20 grid grid-cols-2 md:grid-cols-5 gap-x-14 gap-y-14 place-items-center">
           {images.map((image, index) => (
           <div>
           <img
-            className="h-auto max-w-full rounded-lg"
+            className="max-h-24 w-auto"
             src={image}
             key={index}
           />

@@ -6,10 +6,10 @@ import { Text, Typo } from "../../../components/Typography";
 export const EmailSignup = (props: {id?:string, className?: string }) => {
 	return (
 		<FrostedPanel className={props.className} id={props.id}>
-				<div className="flex flex-col items-center justify-center">
+				<div className="flex flex-col items-center justify-center space-y-5">
 					<Text typo={Typo.TITLE_3}>Coming in 2025!</Text>
 					<Text typo={Typo.TITLE}>cuHacking</Text>
-					<Text typo={Typo.SUBTITLE}>Carleton University's Official Hackathon</Text>
+					<Text typo={Typo.SUBTITLE} className="text-center">Carleton University's Official Hackathon</Text>
 					<EmailSubscriptionForm />
 				</div>
 		</FrostedPanel>
@@ -19,7 +19,7 @@ export const EmailSignup = (props: {id?:string, className?: string }) => {
 export const SponsorEmailSignup = () => {
 	return (
 		<FrostedPanel>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center space-y-5">
 			<a>Interested in becoming a sponsor?</a>
 			<SponsorEmailSubscriptionForm />
       </div>
