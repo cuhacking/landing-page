@@ -18,11 +18,11 @@ export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?
 		case Typo.TITLE_2:
 			return <h2 className={"md:text-6xl sm:text-5xl text-3xl font-display " + props.className}>{props.children}</h2>;
 		case Typo.TITLE_3:
-			return <h2 className={"md:text-4xl sm:text-2xl text-xl font-bold font-body text-secondary " + props.className}>{props.children}</h2>;
+			return <h2 className={"md:text-4xl sm:text-2xl text-xl font-bold text-secondary " + props.className}>{props.children}</h2>;
 		case Typo.SUBTITLE:
-			return <h5 className={"sm:text-base text-xs font-body " + props.className}>{props.children}</h5>;
+			return <h5 className={"sm:text-base text-xs " + props.className}>{props.children}</h5>;
 		case Typo.PARAGRAPH:
-			return <p className={"font-body " + props.className}>{props.children}</p>;
+			return <p className={"" + props.className}>{props.children}</p>;
 		default:
 			return <div className={props.className}>{props.children}</div>;
 	}

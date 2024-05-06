@@ -9,7 +9,7 @@ export default {
   theme: {
     fontFamily: {
       'display': ['Lexend Deca',],
-      'body': ["Poppins",],
+      'sans': ["Poppins",],
     },
     extend: {},
   },
