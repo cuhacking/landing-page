@@ -9,6 +9,7 @@ export enum Typo {
 	PARAGRAPH,
 }
 
+// All text should be wrapped in this component
 export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?: string }> = (
 	props
 ) => {
