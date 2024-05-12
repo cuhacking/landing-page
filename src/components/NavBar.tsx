@@ -22,7 +22,7 @@ const Nav = () => {
 		<div className="w-full navbar fixed z-50">
 			<div className="flex-1">
 				<a href="">
-					<img src="/Logo.svg" className="w-9"></img>
+					<img src="/Logo.svg" className="w-9" alt="Logo"></img>
 				</a>
 			</div>
 			<div className="flex-none hidden md:block">
