@@ -30,7 +30,7 @@ export const Apply = () => {
 
     // const [scrollDiretion, setScrollDiretion] = useState("");
     // const [questionIndex, setQuestionIndex] = useState(0);
-    const [animation, setAnimation] = useState("slideup");
+    const [animation] = useState("slideup");
     // const [wheel, setWheel] = useState(true);
 
     const questions: Question[] = [

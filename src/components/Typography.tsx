@@ -1,6 +1,3 @@
-import { useStyletron } from "baseui";
-import { StyleObject } from "styletron-react";
-
 export enum Typo {
 	TITLE,
 	TITLE_2,

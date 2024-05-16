@@ -1,5 +1,3 @@
-import { useStyletron } from "baseui";
-import React, { useLayoutEffect, useRef } from "react";
 import Marquee from "react-fast-marquee";
 
 export interface ImageDisplayProps {
@@ -8,8 +6,7 @@ export interface ImageDisplayProps {
 }
 
 export const ImageDisplay = (props: ImageDisplayProps) => {
-  const [css] = useStyletron();
-
+  
   return (
     <img
       className="object-contain max-h-96 rounded-xl mr-12"

@@ -1,9 +1,6 @@
-import { useStyletron } from "baseui";
 import { PAST_SPONSOR_IMAGES } from "./cuHackingPastSponsors";
 
 export const PastSponsors = () => {
-  const [css, _$theme] = useStyletron();
-
   // list of image url strings
   const images = PAST_SPONSOR_IMAGES;
 
