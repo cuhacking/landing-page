@@ -9,11 +9,7 @@
 
 }
 
-/* * {
-	scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
-} */
-
-body {    
-    /* background-color: var(--background-light-blue); */
+.faq-link{
+    text-decoration: underline;
+    color: var(--text-pink);
 }

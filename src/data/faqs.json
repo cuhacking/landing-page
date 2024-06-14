@@ -18,5 +18,9 @@
     {
         "question": "Do I need coding experience?",
         "answer": "No, coding experience is not a requirement to participate in cuHacking. We welcome participants with varying levels of coding experience, from beginners to seasoned coders. Our event is designed to be inclusive, offering opportunities for skill development and learning. Whether you're new to coding and want to explore this field or you're an experienced coder looking to hone your skills further, cuHacking provides a supportive environment for everyone. You'll have the chance to collaborate, learn, and innovate, regardless of your coding background."
+    },
+    {
+        "question": "Is there a code of conduct?",
+        "answer": "Yes, cuHacking has a code of conduct that all participants must adhere to. We are committed to providing a safe, inclusive, and respectful environment for everyone. We proudly use the <a class='faq-link' href='http://hackp.ac/coc'>MLH Code of Conduct</a>, which sets the standard for behavior at our event."
     }
 ]
