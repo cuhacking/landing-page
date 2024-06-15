@@ -1,5 +1,3 @@
-// import mlh png file from public
-import React from "react";
 import mlh from "/mlh.png";
 
 export const MLHBadge = () => {

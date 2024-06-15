@@ -6,7 +6,6 @@ import raven from "/hero-svgs/raven.svg";
 import snow from "/hero-svgs/snow.svg";
 
 import { EmailSignup } from "./EmailSignup";
-import { MLHBadge } from "../../../components/MLHBadge";
 
 export const Hero = () => {
   const addAnchor = () => {
