@@ -13,6 +13,18 @@ export const EmailSignup = (props: { id?: string; className?: string }) => {
           Carleton University's Official Hackathon
         </Text>
         <EmailSubscriptionForm />
+        <div
+          style={{
+            color: "var(--color-primary)",
+            cursor: "pointer",
+            textDecoration: "underline",
+          }}
+          onClick={() => {
+            window.open("https://forms.gle/D6vV4SJKjyLbWXsX7", "_blank");
+          }}
+        >
+          Early Hacker Application Form
+        </div>
       </div>
     </FrostedPanel>
   );
