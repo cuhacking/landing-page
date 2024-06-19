@@ -2,7 +2,20 @@ import { MLHBadge } from "./MLHBadge";
 import "./NavBar.scss";
 
 // TODO: Add the hrefs for the navbar
-const links = ["About", "FAQ", "Sponsors", "Join Us"];
+const links = [
+  // {title: "About",
+  //   link: "/#about"
+  // },
+  {title: "FAQ",
+    link: "/#faq"
+  },
+  {title: "Sponsors",
+    link: "/#sponsors"
+  },
+  // {title: "Join Us",
+  //   link: ""
+  // }
+];
 
 export const NavBar = (props: { children: React.ReactNode }) => {
   return (
@@ -64,13 +77,13 @@ const Drawer = () => {
 const NavLinks = (props: {
   className?: string;
   liClassName?: string;
-  links: any[];
+  links: {title: string, link: string}[];
 }) => {
   return (
     <ul className={props.className}>
       {props.links.map((link, index) => (
         <li className={props.liClassName} key={index}>
-          <a>{link}</a>
+          <a href={link.link}>{link.title}</a>
         </li>
       ))}
     </ul>

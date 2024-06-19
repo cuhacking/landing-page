@@ -4,7 +4,7 @@ import { Faq } from "./types";
 
 export const FaqSection = () => {
 	return (
-		<div className="lg:mt-36 flex flex-col lg:w-3/4 w-5/6 m-auto">
+		<div id="faq" className="lg:mt-36 flex flex-col lg:w-3/4 w-5/6 m-auto">
 			<Heading>FAQ</Heading>
             
 			{faqs.map((faq: Faq) => (
