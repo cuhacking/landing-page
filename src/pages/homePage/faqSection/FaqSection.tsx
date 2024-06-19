@@ -1,14 +1,27 @@
 import { Heading } from "../../../components/Typography";
-import { FaqManager } from "./faqManager/FaqManager";
 import faqs from "../../../data/faqs.json";
 import { Faq } from "./types";
-import "./FaqSection.style.scss";
 
 export const FaqSection = () => {
-    return (
-     <div className="FaqSection">
-         <Heading>FAQ</Heading>
-         <FaqManager faqs={faqs as Faq[]} />
-     </div>
-    );
+	return (
+		<div className="lg:mt-36 flex flex-col lg:w-3/4 w-5/6 m-auto">
+			<Heading>FAQ</Heading>
+            
+			{faqs.map((faq: Faq) => (
+				<FaqAccordion faq={faq} />
+			))}
+		</div>
+	);
+};
+
+const FaqAccordion = (props: { faq: Faq }) => {
+	return (
+		<div className="collapse collapse-arrow bg-base-200 my-2">
+			<input type="checkbox" name="my-accordion-2" />
+			<div className="collapse-title text-xl font-medium">{props.faq.question}</div>
+			<div className="collapse-content">
+				<p>{props.faq.answer}</p>
+			</div>
+		</div>
+	);
 };

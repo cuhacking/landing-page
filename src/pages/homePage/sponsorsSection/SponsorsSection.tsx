@@ -7,7 +7,7 @@ export const SponsorsSection = () => {
       <div>
       <Heading>Past Sponsors</Heading>
       <PastSponsors />
-      <SponsorEmailSignup />
+      <SponsorEmailSignup className="w-1/2 mx-auto my-20"/>
     </div>
     );
 };

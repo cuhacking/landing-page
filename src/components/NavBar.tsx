@@ -30,7 +30,7 @@ const Nav = () => {
       <div className="flex-none hidden md:block">
         <NavLinks links={links} className="menu menu-horizontal" />
       </div>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
       <div className="flex-none md:hidden">
         <label
           htmlFor="my-drawer-3"
@@ -54,7 +54,7 @@ const Drawer = () => {
       ></label>
       <NavLinks
         links={links}
-        className="menu p-4 w-80 min-h-full bg-base-200"
+        className="menu p-4 w-80 min-h-full bg-base-200 pt-16 cursor-pointer"
       />
     </div>
   );
