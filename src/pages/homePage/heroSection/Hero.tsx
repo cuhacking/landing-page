@@ -35,7 +35,7 @@ export const Hero = () => {
         </div>
       </div>
       <div className="hero__content">
-        <EmailSignup id="email-signup-anchor" />
+        <EmailSignup id="email-signup-anchor"/>
         <div id="raven" className=" w-96">
           <img className="image " src={raven} alt="Raven" />
         </div>

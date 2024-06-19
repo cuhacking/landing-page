@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 export default {
   content: [
     './index.html',
@@ -7,6 +9,10 @@ export default {
     './src/pages/homePage/**/*.{html,js,tsx}',
   ],
   theme: {
+    screens: {
+      'xs': '475px',
+      ...defaultTheme.screens,
+    },
     fontFamily: {
       'display': ['Lexend Deca',],
       'sans': ["Poppins",],

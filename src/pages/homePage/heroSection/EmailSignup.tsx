@@ -59,11 +59,11 @@ export const EmailSubscriptionForm = () => {
   };
 
   return (
-    <div className="flex mt-5 w-full">
+    <div className="flex mt-5 w-full gap-4 flex-col md:flex-row">
       <input
         type="text"
         placeholder="Email"
-        className="input input-bordered mr-5 rounded-full w-full "
+        className="input input-bordered rounded-full w-full "
         onChange={(e) => setValue(e.currentTarget.value)}
         onKeyUp={(e) => {
           if (e.key === "Enter") submitEmail();
@@ -108,11 +108,11 @@ export const SponsorEmailSubscriptionForm = () => {
   };
 
   return (
-    <div className="flex mt-5 w-full">
+    <div className="flex mt-5 w-full flex-col gap-4 sm:flex-row">
       <input
         type="text"
         placeholder="Email"
-        className="input input-bordered mr-5 rounded-full w-full "
+        className="input input-bordered rounded-full w-full "
         onChange={(e) => setValue(e.currentTarget.value)}
         onKeyUp={(e) => {
           if (e.key === "Enter") submitEmail();

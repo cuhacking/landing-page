@@ -12,7 +12,7 @@ export const Text: React.FC<{ children: React.ReactNode; typo?: Typo; className?
 ) => {
 	switch (props.typo) {
 		case Typo.TITLE:
-			return <h1 className={"lg:text-9xl md:text-8xl sm:text-7xl text-5xl font-bold font-display " + props.className}>{props.children}</h1>;
+			return <h1 className={"lg:text-9xl md:text-8xl sm:text-7xl xs:text-6xl text-4xl font-bold font-display " + props.className}>{props.children}</h1>;
 		case Typo.TITLE_2:
 			return <h2 className={"md:text-6xl sm:text-5xl text-3xl font-display " + props.className}>{props.children}</h2>;
 		case Typo.TITLE_3:
