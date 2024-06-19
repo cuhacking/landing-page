@@ -77,24 +77,24 @@ const NavLinks = (props: {
   );
 };
 
-const ThemeToggle = () => {
-  const toggleTheme = () => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      document.documentElement.getAttribute("data-theme") === "dark"
-        ? "light"
-        : "dark"
-    );
-  };
+// const ThemeToggle = () => {
+//   const toggleTheme = () => {
+//     document.documentElement.setAttribute(
+//       "data-theme",
+//       document.documentElement.getAttribute("data-theme") === "dark"
+//         ? "light"
+//         : "dark"
+//     );
+//   };
 
-  return (
-    <label className="swap swap-rotate">
-      <input type="checkbox" onClick={() => toggleTheme()} />
-      {sunIcon}
-      {moonIcon}
-    </label>
-  );
-};
+//   return (
+//     <label className="swap swap-rotate">
+//       <input type="checkbox" onClick={() => toggleTheme()} />
+//       {sunIcon}
+//       {moonIcon}
+//     </label>
+//   );
+// };
 
 const sunIcon = (
   <svg
