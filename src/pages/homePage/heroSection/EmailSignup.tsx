@@ -13,28 +13,19 @@ export const EmailSignup = (props: { id?: string; className?: string }) => {
           Carleton University's Official Hackathon
         </Text>
         <EmailSubscriptionForm />
-        <div
-          style={{
-            color: "var(--color-primary)",
-            cursor: "pointer",
-            textDecoration: "underline",
-          }}
-          onClick={() => {
-            window.open("https://forms.gle/D6vV4SJKjyLbWXsX7", "_blank");
-          }}
-        >
-          Early Hacker Application Form
-        </div>
+        <a href="https://forms.gle/D6vV4SJKjyLbWXsX7" target="_blank" >
+          <Text typo={Typo.SUBTITLE} className="underline font-bold text-shadow-white">Early Hacker Application Form</Text>
+        </a>
       </div>
     </FrostedPanel>
   );
 };
 
-export const SponsorEmailSignup = () => {
+export const SponsorEmailSignup = (props: { id?: string; className?: string })=> {
   return (
-    <FrostedPanel>
+    <FrostedPanel className={props.className} id={props.id}>
       <div className="flex flex-col items-center justify-center space-y-5">
-        <a>Interested in becoming a sponsor?</a>
+        <Text typo={Typo.SUBTITLE}>Interested in becoming a sponsor?</Text>
         <SponsorEmailSubscriptionForm />
       </div>
     </FrostedPanel>
