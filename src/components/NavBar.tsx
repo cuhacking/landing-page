@@ -54,7 +54,7 @@ const Drawer = () => {
 			<label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
 			<NavLinks
 				links={links}
-				className="menu p-4 w-80 min-h-full bg-base-200 pt-16 cursor-pointer"
+				className="menu p-4 w-80 min-h-full bg-base-200 pt-16 cursor-pointer "
 			/>
 		</div>
 	);
@@ -65,11 +65,21 @@ const NavLinks = (props: {
 	liClassName?: string;
 	links: { title: string; link: string }[];
 }) => {
+	
+	const handleLinkClick = () => {
+		const drawerToggle = document.getElementById("my-drawer-3") as HTMLInputElement;
+		if (drawerToggle) {
+			drawerToggle.checked = false;
+		}
+	};
+
 	return (
 		<ul className={props.className}>
 			{props.links.map((link, index) => (
 				<li className={props.liClassName} key={index}>
-					<a href={link.link}>{link.title}</a>
+					<a href={link.link} onClick={handleLinkClick}>
+						{link.title}
+					</a>
 				</li>
 			))}
 		</ul>

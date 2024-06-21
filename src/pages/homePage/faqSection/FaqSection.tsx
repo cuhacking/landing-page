@@ -20,7 +20,7 @@ const FaqAccordion = (props: { faq: Faq }) => {
 			<input type="checkbox" name="my-accordion-2" />
 			<div className="collapse-title text-xl font-medium">{props.faq.question}</div>
 			<div className="collapse-content">
-				<p>{props.faq.answer}</p>
+				<p dangerouslySetInnerHTML={{ __html: props.faq.answer }}></p>
 			</div>
 		</div>
 	);
