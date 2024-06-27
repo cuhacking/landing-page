@@ -1,5 +1,4 @@
 import { MLHBadge } from "./MLHBadge";
-import "./NavBar.scss";
 
 const links = [
 	// {title: "About",
