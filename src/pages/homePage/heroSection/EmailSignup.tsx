@@ -24,7 +24,7 @@ export const EmailSignup = (props: { id?: string; className?: string }) => {
 export const SponsorEmailSignup = (props: { id?: string; className?: string })=> {
   return (
     <FrostedPanel className={props.className} id={props.id}>
-      <div className="flex flex-col items-center justify-center space-y-5">
+      <div className="flex flex-col items-center justify-center space-y-5 mx-auto">
         <Text typo={Typo.TITLE_4}>Interested in becoming a sponsor?</Text>
         <SponsorEmailSubscriptionForm />
       </div>
