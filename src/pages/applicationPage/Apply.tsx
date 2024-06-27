@@ -1,4 +1,3 @@
-import "./Apply.css";
 import { TextInput, MultipleChoice, Dropdown, ReviewQuestions, TitlePage, ProgressBar } from "./QuestionComponents"
 import { useState, useEffect } from "react";
 
