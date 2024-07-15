@@ -1,88 +1,98 @@
-import { MLHBadge } from "./MLHBadge";
+import { MLHBadge, StandoutStickersLogo } from "./MLHBadge";
 
 const links = [
-	// {title: "About",
-	//   link: "/#about"
-	// },
-	{ title: "FAQ", link: "/#faq" },
-	{ title: "Sponsors", link: "/#sponsors" },
-	// {title: "Join Us",
-	//   link: ""
-	// }
+  // {title: "About",
+  //   link: "/#about"
+  // },
+  { title: "FAQ", link: "/#faq" },
+  { title: "Sponsors", link: "/#sponsors" },
+  // {title: "Join Us",
+  //   link: ""
+  // }
 ];
 
 export const NavBar = (props: { children: React.ReactNode }) => {
-	return (
-		<div id="navbar" className="drawer drawer-end">
-			<input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-			<div className="drawer-content flex flex-col">
-				<Nav />
-				{/* Contents of the page */}
-				{props.children}
-			</div>
-			<Drawer />
-		</div>
-	);
+  return (
+    <div id="navbar" className="drawer drawer-end">
+      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
+        <Nav />
+        {/* Contents of the page */}
+        {props.children}
+      </div>
+      <Drawer />
+    </div>
+  );
 };
 
 const Nav = () => {
-	return (
-		<div className="w-full navbar fixed z-50">
-			<div className="flex-1">
-				<a href="">
-					<img src="/Logo.svg" className="w-9" alt="Logo" />
-					<MLHBadge />
-				</a>
-			</div>
-			<div className="flex-none hidden md:block">
-				<NavLinks links={links} className="menu menu-horizontal" />
-			</div>
-			{/* <ThemeToggle /> */}
-			<div className="flex-none md:hidden">
-				<label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
-					{hamburgerIcon}
-				</label>
-			</div>
-		</div>
-	);
+  return (
+    <div className="w-full navbar fixed z-50">
+      <div className="flex-1 gap-4 flex items-center">
+        <a href="">
+          <img src="/Logo.svg" className="w-9" alt="Logo" />
+          <MLHBadge />
+        </a>
+        <StandoutStickersLogo />
+      </div>
+      <div className="flex-none hidden md:block">
+        <NavLinks links={links} className="menu menu-horizontal" />
+      </div>
+      {/* <ThemeToggle /> */}
+      <div className="flex-none md:hidden">
+        <label
+          htmlFor="my-drawer-3"
+          aria-label="open sidebar"
+          className="btn btn-square btn-ghost"
+        >
+          {hamburgerIcon}
+        </label>
+      </div>
+    </div>
+  );
 };
 
 const Drawer = () => {
-	return (
-		<div className="drawer-side">
-			<label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-			<NavLinks
-				links={links}
-				className="menu p-4 w-80 min-h-full bg-base-200 pt-16 cursor-pointer "
-			/>
-		</div>
-	);
+  return (
+    <div className="drawer-side">
+      <label
+        htmlFor="my-drawer-3"
+        aria-label="close sidebar"
+        className="drawer-overlay"
+      ></label>
+      <NavLinks
+        links={links}
+        className="menu p-4 w-80 min-h-full bg-base-200 pt-16 cursor-pointer "
+      />
+    </div>
+  );
 };
 
 const NavLinks = (props: {
-	className?: string;
-	liClassName?: string;
-	links: { title: string; link: string }[];
+  className?: string;
+  liClassName?: string;
+  links: { title: string; link: string }[];
 }) => {
-	
-	const handleLinkClick = () => {
-		const drawerToggle = document.getElementById("my-drawer-3") as HTMLInputElement;
-		if (drawerToggle) {
-			drawerToggle.checked = false;
-		}
-	};
+  const handleLinkClick = () => {
+    const drawerToggle = document.getElementById(
+      "my-drawer-3"
+    ) as HTMLInputElement;
+    if (drawerToggle) {
+      drawerToggle.checked = false;
+    }
+  };
 
-	return (
-		<ul className={props.className}>
-			{props.links.map((link, index) => (
-				<li className={props.liClassName} key={index}>
-					<a href={link.link} onClick={handleLinkClick}>
-						{link.title}
-					</a>
-				</li>
-			))}
-		</ul>
-	);
+  return (
+    <ul className={props.className}>
+      {props.links.map((link, index) => (
+        <li className={props.liClassName} key={index}>
+          <a href={link.link} onClick={handleLinkClick}>
+            {link.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 // const ThemeToggle = () => {
@@ -125,17 +135,17 @@ const NavLinks = (props: {
 // );
 
 const hamburgerIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		className="inline-block w-6 h-6 stroke-current"
-	>
-		<path
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			strokeWidth="2"
-			d="M4 6h16M4 12h16M4 18h16"
-		></path>
-	</svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    className="inline-block w-6 h-6 stroke-current"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M4 6h16M4 12h16M4 18h16"
+    ></path>
+  </svg>
 );
