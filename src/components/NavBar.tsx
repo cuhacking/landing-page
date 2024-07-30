@@ -1,4 +1,4 @@
-import { MLHBadge, StandoutStickersLogo } from "./MLHBadge";
+import { MLHBadge } from "./MLHBadge";
 
 const links = [
   // {title: "About",
