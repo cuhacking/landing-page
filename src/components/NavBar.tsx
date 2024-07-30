@@ -33,7 +33,6 @@ const Nav = () => {
           <img src="/Logo.svg" className="w-9" alt="Logo" />
           <MLHBadge />
         </a>
-        <StandoutStickersLogo />
       </div>
       <div className="flex-none hidden md:block">
         <NavLinks links={links} className="menu menu-horizontal" />
